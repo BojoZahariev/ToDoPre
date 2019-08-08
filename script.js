@@ -37,7 +37,8 @@ submitButton.addEventListener('click', function(e) {
 		liMaker(input2.value);
 
 		//testing
-		let p = new Project('project11');
+		//name = input2.value;
+		let p = new Project(input2.value);
 		p.doSomething();
 
 		input.value = '';
