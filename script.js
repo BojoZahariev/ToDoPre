@@ -10,6 +10,17 @@ let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem
 localStorage.setItem('items', JSON.stringify(itemsArray));
 const data = JSON.parse(localStorage.getItem('items'));
 
+//testing
+class Project {
+	constructor(name) {
+		this.name = name;
+	}
+
+	doSomething() {
+		alert(this.name);
+	}
+}
+
 const liMaker = (text) => {
 	const li = document.createElement('li');
 	li.textContent = text;
@@ -24,6 +35,11 @@ submitButton.addEventListener('click', function(e) {
 		itemsArray.push(input2.value);
 		localStorage.setItem('items', JSON.stringify(itemsArray));
 		liMaker(input2.value);
+
+		//testing
+		let p = new Project('project11');
+		p.doSomething();
+
 		input.value = '';
 		input2.value = '';
 	}
