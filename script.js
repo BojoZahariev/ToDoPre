@@ -1,34 +1,38 @@
-const form = document.querySelector('form')
-const ul = document.querySelector('ul')
-const button = document.querySelector('button')
-const input = document.getElementById('item')
-let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
+const form = document.querySelector('form');
+const ul = document.querySelector('ul');
+const clearButton = document.getElementById('clear');
+const input = document.getElementById('item');
+const submitButton = document.getElementById('submit');
+let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
-localStorage.setItem('items', JSON.stringify(itemsArray))
-const data = JSON.parse(localStorage.getItem('items'))
+localStorage.setItem('items', JSON.stringify(itemsArray));
+const data = JSON.parse(localStorage.getItem('items'));
 
-const liMaker = text => {
-    const li = document.createElement('li')
-    li.textContent = text
-    ul.appendChild(li)
-}
+const liMaker = (text) => {
+	const li = document.createElement('li');
+	li.textContent = text;
 
-form.addEventListener('submit', function (e) {
-    e.preventDefault()
+	ul.appendChild(li);
+	console.log(li);
+};
 
-    itemsArray.push(input.value)
-    localStorage.setItem('items', JSON.stringify(itemsArray))
-    liMaker(input.value)
-    input.value = ''
-})
+submitButton.addEventListener('click', function(e) {
+	e.preventDefault();
+	if (input.value !== '') {
+		itemsArray.push(input.value);
+		localStorage.setItem('items', JSON.stringify(itemsArray));
+		liMaker(input.value);
+		input.value = '';
+	}
+});
 
-data.forEach(item => {
-    liMaker(item)
-})
+data.forEach((item) => {
+	liMaker(item);
+});
 
-button.addEventListener('click', function () {
-    localStorage.clear()
-    while (ul.firstChild) {
-        ul.removeChild(ul.firstChild)
-    }
-})
+clearButton.addEventListener('click', function() {
+	localStorage.clear();
+	while (ul.firstChild) {
+		ul.removeChild(ul.firstChild);
+	}
+});
