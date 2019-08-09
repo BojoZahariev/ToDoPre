@@ -12,33 +12,34 @@ const data = JSON.parse(localStorage.getItem('items'));
 
 //testing
 class Project {
-	constructor(name) {
-		this.name = name;
+	constructor(title, description) {
+		this.title = title;
+		this.description = description;
 	}
 
 	doSomething() {
-		liMaker(this.name);
+		liMaker(this.title);
+		liMaker(this.description);
 	}
 }
 
 const liMaker = (text) => {
 	const li = document.createElement('li');
 	li.textContent = text;
-
 	list1.appendChild(li);
-	console.log(li);
 };
 
 submitButton.addEventListener('click', function(e) {
 	e.preventDefault();
 	if (input.value !== '' && input2.value !== '') {
+		itemsArray.push(input.value);
 		itemsArray.push(input2.value);
 		localStorage.setItem('items', JSON.stringify(itemsArray));
 		//liMaker(input2.value);
 
 		//testing
-		//name = input2.value;
-		let p = new Project(input2.value);
+		//title = input2.value;
+		let p = new Project(input.value, input2.value);
 		p.doSomething();
 
 		input.value = '';
