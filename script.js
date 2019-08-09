@@ -17,7 +17,7 @@ class Project {
 	}
 
 	doSomething() {
-		alert(this.name);
+		liMaker(this.name);
 	}
 }
 
@@ -34,7 +34,7 @@ submitButton.addEventListener('click', function(e) {
 	if (input.value !== '' && input2.value !== '') {
 		itemsArray.push(input2.value);
 		localStorage.setItem('items', JSON.stringify(itemsArray));
-		liMaker(input2.value);
+		//liMaker(input2.value);
 
 		//testing
 		//name = input2.value;
