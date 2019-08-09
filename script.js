@@ -20,7 +20,7 @@ class Project {
 		this.priority = priority;
 	}
 
-	doSomething() {
+	displayList() {
 		let list = document.createElement('ul');
 		for (let i = 0; i < 4; i++) {
 			var item = document.createElement('li');
@@ -58,12 +58,11 @@ const liMaker = (text) => {
 submitButton.addEventListener('click', function(e) {
 	e.preventDefault();
 	if (input1.value !== '' && input2.value !== '') {
-		//testing
 		let proj = new Project(input1.value, input2.value, input3.value, input4.value);
 		itemsArray.push(proj);
 		localStorage.setItem('items', JSON.stringify(itemsArray));
 		//liMaker(proj);
-		proj.doSomething();
+		proj.displayList();
 
 		input1.value = '';
 		input2.value = '';
@@ -78,6 +77,7 @@ data.forEach((item) => {
 
 clearButton.addEventListener('click', function() {
 	localStorage.clear();
+	itemsArray = [];
 	while (listContainer.firstChild) {
 		listContainer.removeChild(listContainer.firstChild);
 	}
