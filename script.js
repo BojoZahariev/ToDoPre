@@ -2,8 +2,10 @@ const form = document.querySelector('form');
 const list1 = document.getElementById('list1');
 const list2 = document.getElementById('list2');
 const clearButton = document.getElementById('clear');
-const input = document.getElementById('item');
+const input1 = document.getElementById('item1');
 const input2 = document.getElementById('item2');
+const input3 = document.getElementById('item3');
+const input4 = document.getElementById('item4');
 const submitButton = document.getElementById('submit');
 let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
@@ -12,14 +14,18 @@ const data = JSON.parse(localStorage.getItem('items'));
 
 //testing
 class Project {
-	constructor(title, description) {
+	constructor(title, description, dueDate, priority) {
 		this.title = title;
 		this.description = description;
+		this.dueDate = dueDate;
+		this.priority = priority;
 	}
 
 	doSomething() {
 		liMaker(this.title);
 		liMaker(this.description);
+		liMaker(this.dueDate);
+		liMaker(this.priority);
 	}
 }
 
@@ -31,19 +37,23 @@ const liMaker = (text) => {
 
 submitButton.addEventListener('click', function(e) {
 	e.preventDefault();
-	if (input.value !== '' && input2.value !== '') {
-		itemsArray.push(input.value);
+	if (input1.value !== '' && input2.value !== '') {
+		itemsArray.push(input1.value);
 		itemsArray.push(input2.value);
+		itemsArray.push(input3.value);
+		itemsArray.push(input4.value);
 		localStorage.setItem('items', JSON.stringify(itemsArray));
 		//liMaker(input2.value);
 
 		//testing
 		//title = input2.value;
-		let p = new Project(input.value, input2.value);
+		let p = new Project(input1.value, input2.value, input3.value, input4.value);
 		p.doSomething();
 
-		input.value = '';
+		input1.value = '';
 		input2.value = '';
+		input3.value = '';
+		input4.value = '';
 	}
 });
 
