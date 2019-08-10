@@ -21,32 +21,44 @@ class Project {
 	}
 
 	displayList() {
-		let list = document.createElement('ul');
+		let list = document.createElement('div');
 		for (let i = 0; i < 4; i++) {
-			var item = document.createElement('li');
+			var item = document.createElement('p');
 			item.classList.add('item');
 			list.appendChild(item);
 		}
 
-		var child = list.querySelectorAll('li');
+		var child = list.querySelectorAll('p');
 		child[0].textContent = this.title;
 		child[1].textContent = this.description;
 		child[2].textContent = this.dueDate;
 		child[3].textContent = this.priority;
 
 		listContainer.appendChild(list);
+
+		//delete button
+		var btn = document.createElement('BUTTON');
+		btn.classList.add('btn-delete');
+		btn.textContent = 'Delete';
+		list.appendChild(btn);
+
+		btn.addEventListener('click', () => {
+			deleteList(this.title);
+			list.remove();
+		});
 	}
 }
 
+//display after reload
 const liMaker = (text) => {
-	let list = document.createElement('ul');
+	let list = document.createElement('div');
 	for (let i = 0; i < 4; i++) {
-		var item = document.createElement('li');
+		var item = document.createElement('p');
 		item.classList.add('item');
 		list.appendChild(item);
 	}
 
-	var child = list.querySelectorAll('li');
+	var child = list.querySelectorAll('p');
 	child[0].textContent = text.title;
 	child[1].textContent = text.description;
 	child[2].textContent = text.dueDate;
@@ -61,7 +73,6 @@ submitButton.addEventListener('click', function(e) {
 		let proj = new Project(input1.value, input2.value, input3.value, input4.value);
 		itemsArray.push(proj);
 		localStorage.setItem('items', JSON.stringify(itemsArray));
-		//liMaker(proj);
 		proj.displayList();
 
 		input1.value = '';
@@ -71,10 +82,12 @@ submitButton.addEventListener('click', function(e) {
 	}
 });
 
+//Display after reload
 data.forEach((item) => {
 	liMaker(item);
 });
 
+//Delete all
 clearButton.addEventListener('click', function() {
 	localStorage.clear();
 	itemsArray = [];
@@ -82,3 +95,13 @@ clearButton.addEventListener('click', function() {
 		listContainer.removeChild(listContainer.firstChild);
 	}
 });
+
+//Delete
+function deleteList(listTitle) {
+	for (let i = 0; i < itemsArray.length; i++) {
+		if (itemsArray[i].title === listTitle) {
+			itemsArray.splice([ i ], 1);
+			localStorage.setItem('items', JSON.stringify(itemsArray));
+		}
+	}
+}
