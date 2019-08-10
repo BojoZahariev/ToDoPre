@@ -63,7 +63,7 @@ submitButton.addEventListener('click', function(e) {
 
 		input1.value = '';
 		input2.value = '';
-		input3.value = '';
+		input3.valueAsDate = new Date();
 		input4.value = '';
 	}
 });
