@@ -22,6 +22,7 @@ class Project {
 
 	displayList() {
 		let list = document.createElement('div');
+		list.classList.add('list');
 		for (let i = 0; i < 4; i++) {
 			var item = document.createElement('p');
 			item.classList.add('item');
