@@ -53,6 +53,7 @@ class Project {
 //display after reload
 const liMaker = (text) => {
 	let list = document.createElement('div');
+	list.classList.add('list');
 	for (let i = 0; i < 4; i++) {
 		var item = document.createElement('p');
 		item.classList.add('item');
@@ -66,12 +67,25 @@ const liMaker = (text) => {
 	child[3].textContent = text.priority;
 
 	listContainer.appendChild(list);
+
+	//delete button
+	var btn = document.createElement('BUTTON');
+	btn.classList.add('btn-delete');
+	btn.textContent = 'Delete';
+	list.appendChild(btn);
+
+	btn.addEventListener('click', () => {
+		deleteList(text.title);
+		list.remove();
+	});
 };
 
 submitButton.addEventListener('click', function(e) {
 	e.preventDefault();
 	if (input1.value !== '' && input2.value !== '') {
 		let proj = new Project(input1.value, input2.value, input3.value, input4.value);
+		//let proj = new mod.Project(input1.value, input2.value, input3.value, input4.value);
+		console.log(proj);
 		itemsArray.push(proj);
 		localStorage.setItem('items', JSON.stringify(itemsArray));
 		proj.displayList();
@@ -106,3 +120,49 @@ function deleteList(listTitle) {
 		}
 	}
 }
+
+/*
+const mod = (() => {
+	class Project {
+		constructor(title, description, dueDate, priority) {
+			this.title = title;
+			this.description = description;
+			this.dueDate = dueDate;
+			this.priority = priority;
+		}
+
+		displayList() {
+			let list = document.createElement('div');
+			list.classList.add('list');
+			for (let i = 0; i < 4; i++) {
+				var item = document.createElement('p');
+				item.classList.add('item');
+				list.appendChild(item);
+			}
+
+			var child = list.querySelectorAll('p');
+			child[0].textContent = this.title;
+			child[1].textContent = this.description;
+			child[2].textContent = this.dueDate;
+			child[3].textContent = this.priority;
+
+			listContainer.appendChild(list);
+
+			//delete button
+			var btn = document.createElement('BUTTON');
+			btn.classList.add('btn-delete');
+			btn.textContent = 'Delete';
+			list.appendChild(btn);
+
+			btn.addEventListener('click', () => {
+				deleteList(this.title);
+				list.remove();
+			});
+		}
+	}
+
+	return {
+		Project
+	};
+})();
+*/
