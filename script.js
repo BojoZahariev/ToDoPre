@@ -2,6 +2,7 @@ const clearButton = document.getElementById('clear');
 const input1 = document.getElementById('item1');
 const input2 = document.getElementById('item2');
 const input3 = document.getElementById('item3');
+input3.valueAsDate = new Date();
 const input4 = document.getElementById('item4');
 const submitButton = document.getElementById('submit');
 const listContainer = document.getElementById('listContainer');
