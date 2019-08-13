@@ -3,7 +3,10 @@ const input1 = document.getElementById('item1');
 const input2 = document.getElementById('item2');
 const input3 = document.getElementById('item3');
 input3.valueAsDate = new Date();
-const input4 = document.getElementById('item4');
+
+const radio1 = document.getElementById('radio1');
+const radio2 = document.getElementById('radio2');
+const radio3 = document.getElementById('radio3');
 const submitButton = document.getElementById('submit');
 const listContainer = document.getElementById('listContainer');
 
@@ -52,13 +55,24 @@ const liMaker = (text) => {
 	});
 };
 
+//Checks which button is checked
+const checked = () => {
+	if (document.getElementById('radio1').checked) {
+		return radio1.value;
+	} else if (document.getElementById('radio2').checked) {
+		return radio2.value;
+	} else if (document.getElementById('radio3').checked) {
+		return radio3.value;
+	}
+};
+
+//Submit
 submitButton.addEventListener('click', function(e) {
 	e.preventDefault();
-	if (input1.value !== '' && input2.value !== '' && input4.value != 'Priority') {
-		let proj = new Project(input1.value, input2.value, input3.value, input4.value);
+	if (input1.value !== '' && input2.value !== '') {
+		let proj = new Project(input1.value, input2.value, input3.value, checked());
 		//don't delete use for webpack
 		//let proj = new mod.Project(input1.value, input2.value, input3.value, input4.value);
-		console.log(proj);
 		itemsArray.push(proj);
 		localStorage.setItem('items', JSON.stringify(itemsArray));
 		liMaker(proj);
@@ -66,7 +80,8 @@ submitButton.addEventListener('click', function(e) {
 		input1.value = '';
 		input2.value = '';
 		input3.valueAsDate = new Date();
-		input4.value = input4[0].value;
+		radio1.checked = true;
+		console.log(checked());
 	}
 });
 
