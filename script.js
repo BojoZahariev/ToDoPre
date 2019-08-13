@@ -54,8 +54,9 @@ const liMaker = (text) => {
 
 submitButton.addEventListener('click', function(e) {
 	e.preventDefault();
-	if (input1.value !== '' && input2.value !== '') {
+	if (input1.value !== '' && input2.value !== '' && input4.value != 'Priority') {
 		let proj = new Project(input1.value, input2.value, input3.value, input4.value);
+		//don't delete use for webpack
 		//let proj = new mod.Project(input1.value, input2.value, input3.value, input4.value);
 		console.log(proj);
 		itemsArray.push(proj);
@@ -65,7 +66,7 @@ submitButton.addEventListener('click', function(e) {
 		input1.value = '';
 		input2.value = '';
 		input3.valueAsDate = new Date();
-		input4.value = '';
+		input4.value = input4[0].value;
 	}
 });
 
