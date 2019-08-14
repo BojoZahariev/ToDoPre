@@ -13,24 +13,25 @@
     <div class="small-container">
         <h1>New Project</h1>
 
-        <form>
-            <input id="item1" type="text" placeholder="title">
-            <input id="item2" type="text" placeholder="description">
+        <form id="formContainer">
+            <input id="item1" type="text" placeholder="Title">
+            <textarea id="item2" rows="1" cols="40">Description</textarea>
             <input id="item3" type="date">
 
-            <label class="radioContainer">One
-                <input id='radio1' value="one" type="radio" checked name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="radioContainer">Two
-                <input id='radio2' value="two" type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="radioContainer">Three
-                <input id='radio3' value="three" type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
-
+            <div>
+                <label class="radioContainer">Can Wait
+                    <input id='radio1' value="Can Wait" type="radio" checked name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radioContainer">ASAP
+                    <input id='radio2' value="ASAP" type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radioContainer">URGENT
+                    <input id='radio3' value="URGENT" type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
 
         </form>
 
