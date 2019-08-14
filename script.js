@@ -18,7 +18,7 @@ const data = JSON.parse(localStorage.getItem('items'));
 //testing
 class Project {
 	constructor(title, description, dueDate, priority) {
-		this.title = title;
+		this.title = title.toUpperCase();
 		this.description = description;
 		this.dueDate = dueDate;
 		this.priority = priority;
