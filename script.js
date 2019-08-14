@@ -25,6 +25,13 @@ class Project {
 	}
 }
 
+//clear the text field on click
+input2.addEventListener('click', function (e) {
+	input2.value = '';
+});
+
+
+
 //display after reload
 const liMaker = (text) => {
 	let list = document.createElement('div');
