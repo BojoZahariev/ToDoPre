@@ -19,7 +19,7 @@ const data = JSON.parse(localStorage.getItem('items'));
 class Project {
 	constructor(title, description, dueDate, priority) {
 		this.title = title.toUpperCase();
-		this.description = description;
+		this.description = description.charAt(0).toUpperCase() + description.slice(1);
 		this.dueDate = dueDate;
 		this.priority = priority;
 	}
