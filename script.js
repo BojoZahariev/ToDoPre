@@ -67,7 +67,7 @@ const checked = () => {
 };
 
 //Submit
-submitButton.addEventListener('click', function(e) {
+submitButton.addEventListener('click', function (e) {
 	e.preventDefault();
 	if (input1.value !== '' && input2.value !== '') {
 		let proj = new Project(input1.value, input2.value, input3.value, checked());
@@ -77,11 +77,11 @@ submitButton.addEventListener('click', function(e) {
 		localStorage.setItem('items', JSON.stringify(itemsArray));
 		liMaker(proj);
 
+		//reset to default after entry
 		input1.value = '';
-		input2.value = '';
+		input2.value = 'Description';
 		input3.valueAsDate = new Date();
 		radio1.checked = true;
-		console.log(checked());
 	}
 });
 
@@ -91,7 +91,7 @@ data.forEach((item) => {
 });
 
 //Delete all
-clearButton.addEventListener('click', function() {
+clearButton.addEventListener('click', function () {
 	localStorage.clear();
 	itemsArray = [];
 	while (listContainer.firstChild) {
@@ -103,7 +103,7 @@ clearButton.addEventListener('click', function() {
 function deleteList(listTitle) {
 	for (let i = 0; i < itemsArray.length; i++) {
 		if (itemsArray[i].title === listTitle) {
-			itemsArray.splice([ i ], 1);
+			itemsArray.splice([i], 1);
 			localStorage.setItem('items', JSON.stringify(itemsArray));
 		}
 	}
