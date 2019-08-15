@@ -26,11 +26,9 @@ class Project {
 }
 
 //clear the text field on click
-input2.addEventListener('click', function (e) {
+input2.addEventListener('click', function(e) {
 	input2.value = '';
 });
-
-
 
 //display after reload
 const liMaker = (text) => {
@@ -45,6 +43,8 @@ const liMaker = (text) => {
 	var child = list.querySelectorAll('p');
 	child[0].textContent = text.title;
 	child[1].textContent = text.description;
+	//edit
+	child[1].contentEditable = 'true';
 	child[2].textContent = text.dueDate;
 	child[3].textContent = text.priority;
 
@@ -74,7 +74,7 @@ const checked = () => {
 };
 
 //Submit
-submitButton.addEventListener('click', function (e) {
+submitButton.addEventListener('click', function(e) {
 	e.preventDefault();
 	if (input1.value !== '' && input2.value !== '') {
 		let proj = new Project(input1.value, input2.value, input3.value, checked());
@@ -98,7 +98,7 @@ data.forEach((item) => {
 });
 
 //Delete all
-clearButton.addEventListener('click', function () {
+clearButton.addEventListener('click', function() {
 	localStorage.clear();
 	itemsArray = [];
 	while (listContainer.firstChild) {
@@ -110,7 +110,7 @@ clearButton.addEventListener('click', function () {
 function deleteList(listTitle) {
 	for (let i = 0; i < itemsArray.length; i++) {
 		if (itemsArray[i].title === listTitle) {
-			itemsArray.splice([i], 1);
+			itemsArray.splice([ i ], 1);
 			localStorage.setItem('items', JSON.stringify(itemsArray));
 		}
 	}
