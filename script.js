@@ -16,7 +16,7 @@ localStorage.setItem('items', JSON.stringify(itemsArray));
 const data = JSON.parse(localStorage.getItem('items'));
 
 //testing
-class Project {
+class ProjectToDos {
 	constructor(title, description, dueDate, priority) {
 		this.title = title.toUpperCase();
 		this.description = description.charAt(0).toUpperCase() + description.slice(1);
@@ -31,7 +31,7 @@ input2.addEventListener('click', function(e) {
 });
 
 //display after reload
-const liMaker = (text) => {
+const listMaker = (text) => {
 	let list = document.createElement('div');
 	list.classList.add('list');
 	for (let i = 0; i < 4; i++) {
@@ -77,12 +77,12 @@ const checked = () => {
 submitButton.addEventListener('click', function(e) {
 	e.preventDefault();
 	if (input1.value !== '' && input2.value !== '') {
-		let proj = new Project(input1.value, input2.value, input3.value, checked());
+		let proj = new ProjectToDos(input1.value, input2.value, input3.value, checked());
 		//don't delete use for webpack
-		//let proj = new mod.Project(input1.value, input2.value, input3.value, input4.value);
+		//let proj = new mod.ProjectToDos(input1.value, input2.value, input3.value, input4.value);
 		itemsArray.push(proj);
 		localStorage.setItem('items', JSON.stringify(itemsArray));
-		liMaker(proj);
+		listMaker(proj);
 
 		//reset to default after entry
 		input1.value = '';
@@ -94,7 +94,7 @@ submitButton.addEventListener('click', function(e) {
 
 //Display after reload
 data.forEach((item) => {
-	liMaker(item);
+	listMaker(item);
 });
 
 //Delete all
@@ -119,7 +119,7 @@ function deleteList(listTitle) {
 //don't delete will use for webpack
 /*
 const mod = (() => {
-	class Project {
+	class ProjectToDos {
 		constructor(title, description, dueDate, priority) {
 			this.title = title;
 			this.description = description;
@@ -131,7 +131,7 @@ const mod = (() => {
 	}
 
 	return {
-		Project
+		ProjectToDos
 	};
 })();
 */
