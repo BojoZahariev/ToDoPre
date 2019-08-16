@@ -1,6 +1,25 @@
+#listContainer {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	width: 33%;
+}
+
+.projectDiv {
+	border: 5px solid #3f583d
+}
+
 .list {
 	border: 1px solid #222;
+
+
 }
+
+.item {
+	display: inline;
+	padding: 10px;
+}
+
 
 #formContainer {
 	display: flex;
@@ -44,12 +63,12 @@
 }
 
 /* On mouse-over, add a grey background color */
-.radioContainer:hover input ~ .checkmark {
+.radioContainer:hover input~.checkmark {
 	background-color: #ccc;
 }
 
 /* When the radio button is checked, add a blue background */
-.radioContainer input:checked ~ .checkmark {
+.radioContainer input:checked~.checkmark {
 	background-color: #2196f3;
 }
 
@@ -61,7 +80,7 @@
 }
 
 /* Show the indicator (dot/circle) when checked */
-.radioContainer input:checked ~ .checkmark:after {
+.radioContainer input:checked~.checkmark:after {
 	display: block;
 }
 
