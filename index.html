@@ -11,7 +11,7 @@
 
 <body>
     <div class="small-container">
-        <h1>To Do</h1>
+
 
         <form id="formContainer">
             <input id="item1" type="text" placeholder="Title">
@@ -33,15 +33,29 @@
                 </label>
             </div>
 
+            <button id="submit">SUBMIT</button>
+
         </form>
 
-        <button id="submit">SUBMIT</button>
+
         <button id="newProjectButton">NEW PROJECT</button>
 
+        <form id="formContainerNewProject">
+            <input id="item1NewProject" type="text" placeholder="Title">
+            <button id="submitNewProject">SUBMIT</button>
+        </form>
+
+        <h2>Current</h2>
+        <div id="projectsContainer">
+            <div id="listContainer">Project 1</div>
+        </div>
+
         <h2>PROJECTS</h2>
-        <div id="listContainer">Project 1</div>
+        <div id="projectsListDiv"></div>
 
         <button id="clear">Clear All</button>
+
+        <button id="testB">Button</button>
     </div>
 
     <script src="script.js"></script>
