@@ -1,3 +1,10 @@
+#projectsContainer {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+}
+
+
 #listContainer {
 	display: flex;
 	flex-direction: column;
@@ -7,9 +14,17 @@
 	border: 1px solid red;
 }
 
-#projectsContainer {
+.currentProject {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
+	flex-wrap: wrap;
+	width: 33%;
+	height: 300px;
+	border: 1px solid red;
+}
+
+.backToList {
+	display: block;
 }
 
 .projectDiv {
