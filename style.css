@@ -3,10 +3,18 @@
 	flex-direction: column;
 	flex-wrap: wrap;
 	width: 33%;
+	height: 300px;
+	border: 1px solid red;
+}
+
+#projectsContainer {
+	display: flex;
+	flex-direction: row;
 }
 
 .projectDiv {
-	border: 5px solid #3f583d
+	border: 1px solid #3f583d;
+	flex-basis: 20%;
 }
 
 .list {
@@ -24,6 +32,10 @@
 #formContainer {
 	display: flex;
 	flex-direction: row;
+}
+
+#formContainerNewProject {
+	display: none;
 }
 
 #item1 {
