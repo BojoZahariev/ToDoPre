@@ -91,6 +91,7 @@ const listMakerProjects = (text) => {
 	btnClose.addEventListener('click', () => {
 		projectsListDiv.appendChild(currentProject);
 		currentProject.classList.toggle('currentProject');
+		currentProject = listContainer;
 	});
 
 	//open
@@ -160,7 +161,10 @@ const checked = () => {
 //Submit
 submitButton.addEventListener('click', function(e) {
 	e.preventDefault();
-	if (input1.value !== '' && input2.value !== '') {
+	if (input1.value !== '') {
+		if (input2.value === 'Description') {
+			input2.value = '';
+		}
 		let proj = new ProjectToDos(input1.value, input2.value, input3.value, checked(), 'todo', currentProject.id);
 		//don't delete use for webpack
 		//let proj = new mod.ProjectToDos(input1.value, input2.value, input3.value, checked());
