@@ -16,15 +16,16 @@ const projectsListDiv = document.getElementById('projectsListDiv');
 const newProjectButton = document.getElementById('newProjectButton');
 const submitNewProject = document.getElementById('submitNewProject');
 const item1NewProject = document.getElementById('item1NewProject');
+
 //Current project div
 var currentProject = listContainer;
 
+//local storage
 let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
-
 localStorage.setItem('items', JSON.stringify(itemsArray));
 const data = JSON.parse(localStorage.getItem('items'));
 
-//testing
+//project
 class Project {
 	constructor(title, type) {
 		this.title = title.toUpperCase();
@@ -32,6 +33,7 @@ class Project {
 	}
 }
 
+//todos
 class ProjectToDos {
 	constructor(title, description, dueDate, priority, type, current) {
 		this.title = title.toUpperCase();
@@ -81,14 +83,27 @@ const listMakerProjects = (text) => {
 		item.remove();
 	});
 
+	//close button
+	var btnClose = document.createElement('BUTTON');
+	btnClose.textContent = 'Close';
+	item.appendChild(btnClose);
+
+	btnClose.addEventListener('click', () => {
+		projectsListDiv.appendChild(currentProject);
+		currentProject.classList.toggle('currentProject');
+	});
+
 	//open
 	var btnOpen = document.createElement('BUTTON');
 	btnOpen.classList.add('btn-delete');
-	btnOpen.textContent = 'open';
+	btnOpen.textContent = 'Open';
 	item.appendChild(btnOpen);
 
 	btnOpen.addEventListener('click', () => {
 		currentProject = document.getElementById(item.id);
+		currentProject.classList.add('currentProject');
+
+		projectsContainer.appendChild(currentProject);
 		console.log('current' + currentProject.id);
 	});
 };
@@ -98,7 +113,7 @@ input2.addEventListener('click', function(e) {
 	input2.value = '';
 });
 
-//display
+//display todos
 const listMaker = (text) => {
 	let list = document.createElement('div');
 	list.classList.add('list');
@@ -115,7 +130,6 @@ const listMaker = (text) => {
 	child[1].contentEditable = 'true';
 	child[2].textContent = text.dueDate;
 	child[3].textContent = text.priority;
-	console.log(text.current);
 
 	currentProject = document.getElementById(text.current);
 	currentProject.appendChild(list);
