@@ -18,7 +18,6 @@ const submitNewProject = document.getElementById('submitNewProject');
 const item1NewProject = document.getElementById('item1NewProject');
 //Current project div
 var currentProject = listContainer;
-var something;
 
 let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
@@ -34,12 +33,13 @@ class Project {
 }
 
 class ProjectToDos {
-	constructor(title, description, dueDate, priority, type) {
+	constructor(title, description, dueDate, priority, type, current) {
 		this.title = title.toUpperCase();
 		this.description = description.charAt(0).toUpperCase() + description.slice(1);
 		this.dueDate = dueDate;
 		this.priority = priority;
 		this.type = type;
+		this.current = current;
 	}
 }
 
@@ -88,9 +88,8 @@ const listMakerProjects = (text) => {
 	item.appendChild(btnOpen);
 
 	btnOpen.addEventListener('click', () => {
-		something = document.getElementById(item.id);
-		currentProject = something;
-		console.log(currentProject);
+		currentProject = document.getElementById(item.id);
+		console.log('current' + currentProject.id);
 	});
 };
 
@@ -116,7 +115,9 @@ const listMaker = (text) => {
 	child[1].contentEditable = 'true';
 	child[2].textContent = text.dueDate;
 	child[3].textContent = text.priority;
+	console.log(text.current);
 
+	currentProject = document.getElementById(text.current);
 	currentProject.appendChild(list);
 
 	//delete button
@@ -146,10 +147,9 @@ const checked = () => {
 submitButton.addEventListener('click', function(e) {
 	e.preventDefault();
 	if (input1.value !== '' && input2.value !== '') {
-		let proj = new ProjectToDos(input1.value, input2.value, input3.value, checked(), 'todo');
+		let proj = new ProjectToDos(input1.value, input2.value, input3.value, checked(), 'todo', currentProject.id);
 		//don't delete use for webpack
 		//let proj = new mod.ProjectToDos(input1.value, input2.value, input3.value, checked());
-
 		itemsArray.push(proj);
 
 		localStorage.setItem('items', JSON.stringify(itemsArray));
