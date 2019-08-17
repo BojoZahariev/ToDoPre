@@ -10,27 +10,96 @@ const radio3 = document.getElementById('radio3');
 const submitButton = document.getElementById('submit');
 const listContainer = document.getElementById('listContainer');
 
+const projectsContainer = document.getElementById('projectsContainer');
+const formContainerNewProject = document.getElementById('formContainerNewProject');
+const projectsListDiv = document.getElementById('projectsListDiv');
+const newProjectButton = document.getElementById('newProjectButton');
+const submitNewProject = document.getElementById('submitNewProject');
+const item1NewProject = document.getElementById('item1NewProject');
+//Current project div
+var currentProject = listContainer;
+var something;
+
 let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
 localStorage.setItem('items', JSON.stringify(itemsArray));
 const data = JSON.parse(localStorage.getItem('items'));
 
 //testing
+class Project {
+	constructor(title, type) {
+		this.title = title.toUpperCase();
+		this.type = type;
+	}
+}
+
 class ProjectToDos {
-	constructor(title, description, dueDate, priority) {
+	constructor(title, description, dueDate, priority, type) {
 		this.title = title.toUpperCase();
 		this.description = description.charAt(0).toUpperCase() + description.slice(1);
 		this.dueDate = dueDate;
 		this.priority = priority;
+		this.type = type;
 	}
 }
 
-//clear the text field on click
+//new Project button
+newProjectButton.addEventListener('click', function(e) {
+	formContainerNewProject.style.display = 'block';
+});
+
+//Submit new project
+submitNewProject.addEventListener('click', function(e) {
+	e.preventDefault();
+
+	let projectMain = new Project(item1NewProject.value, 'project');
+
+	itemsArray.push(projectMain);
+
+	localStorage.setItem('items', JSON.stringify(itemsArray));
+	listMakerProjects(projectMain);
+
+	item1NewProject.value = '';
+	formContainerNewProject.style.display = 'none';
+});
+
+//display projects
+const listMakerProjects = (text) => {
+	let item = document.createElement('p');
+	item.id = text.title;
+	projectsListDiv.appendChild(item);
+	item.textContent = text.title;
+
+	//delete button
+	var btn = document.createElement('BUTTON');
+	btn.classList.add('btn-delete');
+	btn.textContent = 'Delete';
+	item.appendChild(btn);
+
+	btn.addEventListener('click', () => {
+		deleteList(text.title);
+		item.remove();
+	});
+
+	//open
+	var btnOpen = document.createElement('BUTTON');
+	btnOpen.classList.add('btn-delete');
+	btnOpen.textContent = 'open';
+	item.appendChild(btnOpen);
+
+	btnOpen.addEventListener('click', () => {
+		something = document.getElementById(item.id);
+		currentProject = something;
+		console.log(currentProject);
+	});
+};
+
+//clear the description default on click
 input2.addEventListener('click', function(e) {
 	input2.value = '';
 });
 
-//display after reload
+//display
 const listMaker = (text) => {
 	let list = document.createElement('div');
 	list.classList.add('list');
@@ -48,7 +117,7 @@ const listMaker = (text) => {
 	child[2].textContent = text.dueDate;
 	child[3].textContent = text.priority;
 
-	listContainer.appendChild(list);
+	currentProject.appendChild(list);
 
 	//delete button
 	var btn = document.createElement('BUTTON');
@@ -77,10 +146,12 @@ const checked = () => {
 submitButton.addEventListener('click', function(e) {
 	e.preventDefault();
 	if (input1.value !== '' && input2.value !== '') {
-		let proj = new ProjectToDos(input1.value, input2.value, input3.value, checked());
+		let proj = new ProjectToDos(input1.value, input2.value, input3.value, checked(), 'todo');
 		//don't delete use for webpack
-		//let proj = new mod.ProjectToDos(input1.value, input2.value, input3.value, input4.value);
+		//let proj = new mod.ProjectToDos(input1.value, input2.value, input3.value, checked());
+
 		itemsArray.push(proj);
+
 		localStorage.setItem('items', JSON.stringify(itemsArray));
 		listMaker(proj);
 
@@ -94,7 +165,11 @@ submitButton.addEventListener('click', function(e) {
 
 //Display after reload
 data.forEach((item) => {
-	listMaker(item);
+	if (item.type === 'todo') {
+		listMaker(item);
+	} else if (item.type === 'project') {
+		listMakerProjects(item);
+	}
 });
 
 //Delete all
