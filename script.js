@@ -144,7 +144,7 @@ const listMaker = (text) => {
 	list.appendChild(btn);
 
 	btn.addEventListener('click', () => {
-		deleteList(text.title);
+		deleteList(text.title, text.current);
 		list.remove();
 	});
 };
@@ -195,9 +195,9 @@ data.forEach((item) => {
 
 
 //Delete
-function deleteList(listTitle) {
+function deleteList(listTitle, project) {
 	for (let i = 0; i < itemsArray.length; i++) {
-		if (itemsArray[i].title === listTitle) {
+		if (itemsArray[i].title === listTitle && itemsArray[i].current === project) {
 			itemsArray.splice([i], 1);
 			localStorage.setItem('items', JSON.stringify(itemsArray));
 		}
