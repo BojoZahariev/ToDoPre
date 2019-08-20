@@ -57,6 +57,10 @@
 	text-transform: uppercase;
 }
 
+#item1NewProject {
+	text-transform: uppercase;
+}
+
 /* The container */
 .radioContainer {
 	display: inline-block;
