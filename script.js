@@ -46,12 +46,12 @@ class ProjectToDos {
 }
 
 //new Project button
-newProjectButton.addEventListener('click', function(e) {
+newProjectButton.addEventListener('click', function (e) {
 	formContainerNewProject.style.display = 'block';
 });
 
 //Submit new project
-submitNewProject.addEventListener('click', function(e) {
+submitNewProject.addEventListener('click', function (e) {
 	e.preventDefault();
 
 	let projectMain = new Project(item1NewProject.value, 'project');
@@ -92,6 +92,8 @@ const listMakerProjects = (text) => {
 		projectsListDiv.appendChild(currentProject);
 		currentProject.classList.toggle('currentProject');
 		currentProject = listContainer;
+		//gets back the everyday tasks
+		listContainer.style.display = 'block';
 	});
 
 	//open
@@ -103,14 +105,14 @@ const listMakerProjects = (text) => {
 	btnOpen.addEventListener('click', () => {
 		currentProject = document.getElementById(item.id);
 		currentProject.classList.add('currentProject');
-
 		projectsContainer.appendChild(currentProject);
-		console.log('current' + currentProject.id);
+		//displays only the working project
+		listContainer.style.display = 'none';
 	});
 };
 
 //clear the description default on click
-input2.addEventListener('click', function(e) {
+input2.addEventListener('click', function (e) {
 	input2.value = '';
 });
 
@@ -159,7 +161,7 @@ const checked = () => {
 };
 
 //Submit
-submitButton.addEventListener('click', function(e) {
+submitButton.addEventListener('click', function (e) {
 	e.preventDefault();
 	if (input1.value !== '') {
 		if (input2.value === 'Description') {
@@ -190,20 +192,13 @@ data.forEach((item) => {
 	}
 });
 
-//Delete all
-clearButton.addEventListener('click', function() {
-	localStorage.clear();
-	itemsArray = [];
-	while (listContainer.firstChild) {
-		listContainer.removeChild(listContainer.firstChild);
-	}
-});
+
 
 //Delete
 function deleteList(listTitle) {
 	for (let i = 0; i < itemsArray.length; i++) {
 		if (itemsArray[i].title === listTitle) {
-			itemsArray.splice([ i ], 1);
+			itemsArray.splice([i], 1);
 			localStorage.setItem('items', JSON.stringify(itemsArray));
 		}
 	}
