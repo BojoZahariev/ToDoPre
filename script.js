@@ -105,31 +105,29 @@ const listMakerProjects = (text) => {
 		item.remove();
 	});
 
-	//close button
-	var btnClose = document.createElement('BUTTON');
-	btnClose.textContent = 'Close';
-	item.appendChild(btnClose);
 
-	btnClose.addEventListener('click', () => {
-		projectsListDiv.appendChild(currentProject);
-		currentProject.classList.toggle('currentProject');
-		currentProject = listContainer;
-		//gets back the everyday tasks
-		listContainer.style.display = 'block';
-	});
-
-	//open
+	//open/close
 	var btnOpen = document.createElement('BUTTON');
 	btnOpen.classList.add('btn-delete');
 	btnOpen.textContent = 'Open';
 	item.appendChild(btnOpen);
 
 	btnOpen.addEventListener('click', () => {
-		currentProject = document.getElementById(item.id);
-		currentProject.classList.add('currentProject');
-		projectsContainer.appendChild(currentProject);
-		//displays only the working project
-		listContainer.style.display = 'none';
+		if (listContainer.style.display !== 'none') {
+			currentProject = document.getElementById(item.id);
+			currentProject.classList.add('currentProject');
+			projectsContainer.appendChild(currentProject);
+			//displays only the working project
+			listContainer.style.display = 'none';
+			btnOpen.textContent = 'Close';
+		} else if (listContainer.style.display === 'none') {
+			projectsListDiv.appendChild(currentProject);
+			currentProject.classList.toggle('currentProject');
+			currentProject = listContainer;
+			//gets back the everyday tasks
+			listContainer.style.display = 'block';
+			btnOpen.textContent = 'Open';
+		}
 	});
 };
 
