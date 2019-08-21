@@ -47,10 +47,7 @@ class ProjectToDos {
 	}
 }
 
-//new Project button
-newProjectButton.addEventListener('click', function (e) {
-	formContainerNewProject.style.display = 'block';
-});
+
 
 //Submit new project
 submitNewProject.addEventListener('click', function (e) {
@@ -65,6 +62,29 @@ submitNewProject.addEventListener('click', function (e) {
 
 	item1NewProject.value = '';
 	formContainerNewProject.style.display = 'none';
+});
+
+//Submit todo
+submitButton.addEventListener('click', function (e) {
+	e.preventDefault();
+	if (input1.value !== '') {
+		if (input2.value === 'Description') {
+			input2.value = '';
+		}
+		let proj = new ProjectToDos(input1.value, input2.value, input3.value, checked(), 'todo', currentProject.id, itemsArray.length);
+		//don't delete use for webpack
+		//let proj = new mod.ProjectToDos(input1.value, input2.value, input3.value, checked());
+		itemsArray.push(proj);
+
+		localStorage.setItem('items', JSON.stringify(itemsArray));
+		listMaker(proj);
+
+		//reset to default after entry
+		input1.value = '';
+		input2.value = 'Description';
+		input3.valueAsDate = new Date();
+		radio1.checked = true;
+	}
 });
 
 //display projects
@@ -131,6 +151,7 @@ const listMaker = (text) => {
 	var child = list.querySelectorAll('p');
 	child[0].textContent = text.title;
 	child[1].textContent = text.description;
+	child[1].style.display = 'none';
 	//edit
 	child[1].contentEditable = 'true';
 	child[2].textContent = text.dueDate;
@@ -149,6 +170,22 @@ const listMaker = (text) => {
 		deleteList(text.title, text.id);
 		list.remove();
 	});
+
+	//reveal
+	var btnReveal = document.createElement('BUTTON');
+	btnReveal.classList.add('btnReveal');
+	btnReveal.textContent = 'Reveal';
+	list.appendChild(btnReveal);
+
+	btnReveal.addEventListener('click', () => {
+		if (child[1].style.display != 'block' && child[1].textContent != '') {
+			child[1].style.display = 'block';
+			btnReveal.textContent = 'Hide';
+		} else {
+			child[1].style.display = 'none';
+			btnReveal.textContent = 'Reveal';
+		}
+	});
 };
 
 //Checks which button is checked
@@ -162,39 +199,10 @@ const checked = () => {
 	}
 };
 
-//Submit
-submitButton.addEventListener('click', function (e) {
-	e.preventDefault();
-	if (input1.value !== '') {
-		if (input2.value === 'Description') {
-			input2.value = '';
-		}
-		let proj = new ProjectToDos(input1.value, input2.value, input3.value, checked(), 'todo', currentProject.id, itemsArray.length);
-		//don't delete use for webpack
-		//let proj = new mod.ProjectToDos(input1.value, input2.value, input3.value, checked());
-		itemsArray.push(proj);
-
-		localStorage.setItem('items', JSON.stringify(itemsArray));
-		listMaker(proj);
-
-		//reset to default after entry
-		input1.value = '';
-		input2.value = 'Description';
-		input3.valueAsDate = new Date();
-		radio1.checked = true;
-	}
+//new Project button
+newProjectButton.addEventListener('click', function (e) {
+	formContainerNewProject.style.display = 'block';
 });
-
-//Display after reload
-data.forEach((item) => {
-	if (item.type === 'project') {
-		listMakerProjects(item);
-	} else if (item.type === 'todo') {
-		listMaker(item);
-	}
-});
-
-currentProject = listContainer;
 
 //Delete
 function deleteList(listTitle, identification) {
@@ -205,6 +213,20 @@ function deleteList(listTitle, identification) {
 		}
 	}
 }
+
+//Display after reload
+data.forEach((item) => {
+	if (item.type === 'project') {
+		listMakerProjects(item);
+	} else if (item.type === 'todo') {
+		listMaker(item);
+	}
+});
+
+//Current project div
+currentProject = listContainer;
+
+
 
 //don't delete will use for webpack
 /*
