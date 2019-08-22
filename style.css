@@ -11,10 +11,7 @@
 
 #projectsContainer {
 	position: relative;
-	display: flex;
-	flex-direction: row;
 	flex-basis: 70%;
-
 }
 
 #projectsBigContainer {
