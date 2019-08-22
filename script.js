@@ -128,6 +128,8 @@ const listMakerProjects = (text) => {
 			listContainer.style.display = 'block';
 			btnOpen.textContent = 'Open';
 		}
+		
+		console.log(projectsContainer.children[2]);
 	});
 };
 
