@@ -47,10 +47,8 @@ class ProjectToDos {
 	}
 }
 
-
-
 //Submit new project
-submitNewProject.addEventListener('click', function (e) {
+submitNewProject.addEventListener('click', function(e) {
 	e.preventDefault();
 
 	let projectMain = new Project(item1NewProject.value, 'project', itemsArray.length);
@@ -65,13 +63,21 @@ submitNewProject.addEventListener('click', function (e) {
 });
 
 //Submit todo
-submitButton.addEventListener('click', function (e) {
+submitButton.addEventListener('click', function(e) {
 	e.preventDefault();
 	if (input1.value !== '') {
 		if (input2.value === 'Description') {
 			input2.value = '';
 		}
-		let proj = new ProjectToDos(input1.value, input2.value, input3.value, checked(), 'todo', currentProject.id, itemsArray.length);
+		let proj = new ProjectToDos(
+			input1.value,
+			input2.value,
+			input3.value,
+			checked(),
+			'todo',
+			currentProject.id,
+			itemsArray.length
+		);
 		//don't delete use for webpack
 		//let proj = new mod.ProjectToDos(input1.value, input2.value, input3.value, checked());
 		itemsArray.push(proj);
@@ -105,9 +111,8 @@ const listMakerProjects = (text) => {
 		item.remove();
 	});
 
-
 	//open/close
-	var btnOpen = document.createElement('BUTTON');
+	let btnOpen = document.createElement('BUTTON');
 	btnOpen.classList.add('btn-delete');
 	btnOpen.textContent = 'Open';
 	item.appendChild(btnOpen);
@@ -128,13 +133,13 @@ const listMakerProjects = (text) => {
 			listContainer.style.display = 'block';
 			btnOpen.textContent = 'Open';
 		}
-		
+
 		console.log(projectsContainer.children[2]);
 	});
 };
 
 //clear the description default on click
-input2.addEventListener('click', function (e) {
+input2.addEventListener('click', function(e) {
 	input2.value = '';
 });
 
@@ -159,6 +164,13 @@ const listMaker = (text) => {
 
 	currentProject = document.getElementById(text.current);
 	currentProject.appendChild(list);
+
+	//display only when opened
+	/*
+	if (currentProject !== listContainer) {
+		list.style.display = 'none';
+	}
+	*/
 
 	//delete button
 	var btn = document.createElement('BUTTON');
@@ -200,7 +212,7 @@ const checked = () => {
 };
 
 //new Project button
-newProjectButton.addEventListener('click', function (e) {
+newProjectButton.addEventListener('click', function(e) {
 	formContainerNewProject.style.display = 'block';
 });
 
@@ -208,11 +220,27 @@ newProjectButton.addEventListener('click', function (e) {
 function deleteList(listTitle, identification) {
 	for (let i = 0; i < itemsArray.length; i++) {
 		if (itemsArray[i].title === listTitle && itemsArray[i].id === identification) {
-			itemsArray.splice([i], 1);
+			itemsArray.splice([ i ], 1);
 			localStorage.setItem('items', JSON.stringify(itemsArray));
 		}
 	}
 }
+
+/*
+//initial
+initialProject = new Project('main', 'project', itemsArray.length);
+listMakerProjects(initialProject);
+initialToDo = new ProjectToDos(
+	'do stuff',
+	'do everything',
+	input3.value,
+	checked(),
+	'todo',
+	currentProject.id,
+	itemsArray.length
+);
+listMaker(initialToDo);
+*/
 
 //Display after reload
 data.forEach((item) => {
@@ -225,8 +253,6 @@ data.forEach((item) => {
 
 //Current project div
 currentProject = listContainer;
-
-
 
 //don't delete will use for webpack
 /*
