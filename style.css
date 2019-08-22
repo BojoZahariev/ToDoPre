@@ -1,16 +1,32 @@
-#projectsContainer {
-	position: relative;
+#formContainer {
 	display: flex;
 	flex-direction: row;
 }
 
+#small-container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+#projectsContainer {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	flex-basis: 70%;
+
+}
+
+#projectsBigContainer {
+	flex-basis: 30%;
+}
 
 #listContainer {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	width: 33%;
-	height: 300px;
+	width: 100%;
+	height: 80vh;
 	border: 1px solid red;
 }
 
@@ -18,7 +34,7 @@
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	width: 33%;
+
 	height: 300px;
 	border: 1px solid red;
 }
@@ -29,7 +45,7 @@
 
 .projectDiv {
 	border: 1px solid #3f583d;
-	flex-basis: 20%;
+
 }
 
 .list {
@@ -44,10 +60,7 @@
 }
 
 
-#formContainer {
-	display: flex;
-	flex-direction: row;
-}
+
 
 #formContainerNewProject {
 	display: none;
@@ -61,6 +74,8 @@
 	text-transform: uppercase;
 }
 
+
+/*Radio Buttons*/
 /* The container */
 .radioContainer {
 	display: inline-block;
