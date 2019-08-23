@@ -113,8 +113,8 @@ const listMakerProjects = (text) => {
 	item.appendChild(btn);
 
 	btn.addEventListener('click', () => {
-		deleteList(text.title, text.id);
 		item.remove();
+		deleteList(text.title, text.id);
 
 		//gets back the everyday tasks
 		if (currentProject !== listContainer) {
@@ -164,6 +164,8 @@ input2.addEventListener('click', function(e) {
 
 //display todos
 const listMaker = (text) => {
+	currentProject = document.getElementById(text.current);
+	//if (currentProject !== null) {
 	let list = document.createElement('div');
 	list.classList.add('list');
 	for (let i = 0; i < 4; i++) {
@@ -181,7 +183,6 @@ const listMaker = (text) => {
 	child[2].textContent = text.dueDate;
 	child[3].textContent = text.priority;
 
-	currentProject = document.getElementById(text.current);
 	currentProject.appendChild(list);
 
 	//display only ToDos when the project is opened
@@ -215,6 +216,7 @@ const listMaker = (text) => {
 			btnReveal.textContent = 'Reveal';
 		}
 	});
+	//}
 };
 
 //Checks which button is checked
@@ -241,6 +243,34 @@ function deleteList(listTitle, identification) {
 			localStorage.setItem('items', JSON.stringify(itemsArray));
 		}
 	}
+
+	itemsArray = itemsArray.filter((element) => document.getElementById(element.current) !== null);
+
+	localStorage.setItem('items', JSON.stringify(itemsArray));
+	console.log(itemsArray);
+	/*
+	itemsArray.forEach((item) => {
+		let a;
+		if (document.getElementById(item.current) === null) {
+			console.log(item);
+			a = itemsArray.indexOf(item);
+			console.log(a);
+		}
+		//itemsArray.splice([ a ], 1);
+		localStorage.setItem('items', JSON.stringify(itemsArray));
+	});
+
+	console.log('exit');
+*/
+	/*
+	for (let i = 0; i < itemsArray.length; i++) {
+		if (document.getElementById(itemsArray[i].current) === null) {
+			console.log(itemsArray[i]);
+			itemsArray.splice([ i ], 1);
+			localStorage.setItem('items', JSON.stringify(itemsArray));
+		}
+	}
+	*/
 }
 
 /*
