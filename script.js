@@ -118,14 +118,14 @@ const listMakerProjects = (text) => {
 	item.appendChild(btnOpen);
 
 	btnOpen.addEventListener('click', () => {
-		if (listContainer.style.display !== 'none') {
+		if (btnOpen.textContent === 'Open' && projectsContainer.children[2] === undefined) {
 			currentProject = document.getElementById(item.id);
 			currentProject.classList.add('currentProject');
 			projectsContainer.appendChild(currentProject);
 			//displays only the working project
 			listContainer.style.display = 'none';
 			btnOpen.textContent = 'Close';
-		} else if (listContainer.style.display === 'none') {
+		} else if (btnOpen.textContent === 'Close') {
 			projectsListDiv.appendChild(currentProject);
 			currentProject.classList.toggle('currentProject');
 			currentProject = listContainer;
