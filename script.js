@@ -131,7 +131,7 @@ const listMakerProjects = (text) => {
 
 	btnOpen.addEventListener('click', () => {
 		//prevents from opening other project if there is one on
-		if (btnOpen.textContent === 'Open' && projectsContainer.children[2] === undefined) {
+		if (btnOpen.textContent === 'Open' && projectsContainer.children[1] === undefined) {
 			currentProject = document.getElementById(item.id);
 			currentProject.classList.add('currentProject');
 			projectsContainer.appendChild(currentProject);
@@ -184,10 +184,9 @@ const listMaker = (text) => {
 	currentProject = document.getElementById(text.current);
 	currentProject.appendChild(list);
 
-	//display only when opened
+	//display only ToDos when the project is opened
 	if (list.parentNode !== listContainer && listContainer.style.display !== 'none') {
 		list.style.color = 'red';
-		console.log('ding');
 	}
 
 	//delete button
