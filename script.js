@@ -96,6 +96,12 @@ submitButton.addEventListener('click', function(e) {
 //display projects
 const listMakerProjects = (text) => {
 	let item = document.createElement('p');
+
+	let nodes = item.getElementsByClassName('list');
+	for (let i = 0; i < nodes.length; i++) {
+		nodes[i].style.color = 'red';
+	}
+
 	item.id = text.title;
 	projectsListDiv.appendChild(item);
 	item.textContent = text.title;
@@ -132,6 +138,10 @@ const listMakerProjects = (text) => {
 			//displays only the work project
 			listContainer.style.display = 'none';
 			btnOpen.textContent = 'Close';
+
+			for (let i = 0; i < nodes.length; i++) {
+				nodes[i].style.color = 'initial';
+			}
 		} else if (btnOpen.textContent === 'Close') {
 			projectsListDiv.appendChild(currentProject);
 			currentProject.classList.toggle('currentProject');
@@ -139,9 +149,11 @@ const listMakerProjects = (text) => {
 			//gets back the everyday tasks
 			listContainer.style.display = 'block';
 			btnOpen.textContent = 'Open';
-		}
 
-		console.log(projectsContainer.children[2]);
+			for (let i = 0; i < nodes.length; i++) {
+				nodes[i].style.color = 'red';
+			}
+		}
 	});
 };
 
@@ -160,7 +172,7 @@ const listMaker = (text) => {
 		list.appendChild(item);
 	}
 
-	var child = list.querySelectorAll('p');
+	let child = list.querySelectorAll('p');
 	child[0].textContent = text.title;
 	child[1].textContent = text.description;
 	child[1].style.display = 'none';
@@ -173,11 +185,10 @@ const listMaker = (text) => {
 	currentProject.appendChild(list);
 
 	//display only when opened
-	/*
-	if (currentProject !== listContainer) {
-		list.style.display = 'none';
+	if (list.parentNode !== listContainer && listContainer.style.display !== 'none') {
+		list.style.color = 'red';
+		console.log('ding');
 	}
-	*/
 
 	//delete button
 	var btn = document.createElement('BUTTON');
