@@ -109,6 +109,12 @@ const listMakerProjects = (text) => {
 	btn.addEventListener('click', () => {
 		deleteList(text.title, text.id);
 		item.remove();
+
+		//gets back the everyday tasks
+		if (currentProject !== listContainer) {
+			currentProject = listContainer;
+			listContainer.style.display = 'block';
+		}
 	});
 
 	//open/close
@@ -118,11 +124,12 @@ const listMakerProjects = (text) => {
 	item.appendChild(btnOpen);
 
 	btnOpen.addEventListener('click', () => {
+		//prevents from opening other project if there is one on
 		if (btnOpen.textContent === 'Open' && projectsContainer.children[2] === undefined) {
 			currentProject = document.getElementById(item.id);
 			currentProject.classList.add('currentProject');
 			projectsContainer.appendChild(currentProject);
-			//displays only the working project
+			//displays only the work project
 			listContainer.style.display = 'none';
 			btnOpen.textContent = 'Close';
 		} else if (btnOpen.textContent === 'Close') {
