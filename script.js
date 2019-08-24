@@ -27,9 +27,10 @@ const data = JSON.parse(localStorage.getItem('items'));
 
 //project
 class Project {
-	constructor(title, type, id) {
+	constructor(title, type, current, id) {
 		this.title = title.toUpperCase();
 		this.type = type;
+		this.current = current;
 		this.id = id;
 	}
 }
@@ -51,7 +52,7 @@ class ProjectToDos {
 submitNewProject.addEventListener('click', function(e) {
 	e.preventDefault();
 
-	let projectMain = new Project(item1NewProject.value, 'project', itemsArray.length);
+	let projectMain = new Project(item1NewProject.value, 'project', projectsListDiv.id, itemsArray.length);
 
 	itemsArray.push(projectMain);
 
@@ -244,10 +245,13 @@ function deleteList(listTitle, identification) {
 		}
 	}
 
+	console.log('1 ' + itemsArray);
 	itemsArray = itemsArray.filter((element) => document.getElementById(element.current) !== null);
 
 	localStorage.setItem('items', JSON.stringify(itemsArray));
+
 	console.log(itemsArray);
+
 	/*
 	itemsArray.forEach((item) => {
 		let a;
