@@ -97,6 +97,7 @@ submitButton.addEventListener('click', function(e) {
 //display projects
 const listMakerProjects = (text) => {
 	let item = document.createElement('div');
+	let itemTitle = document.createElement('h2');
 
 	//don't display todos in projects list
 	let nodes = item.getElementsByClassName('list');
@@ -105,8 +106,9 @@ const listMakerProjects = (text) => {
 	}
 
 	item.id = text.id;
+	item.appendChild(itemTitle);
 	projectsListDiv.appendChild(item);
-	item.textContent = text.title;
+	itemTitle.textContent = text.title;
 
 	//delete button
 	var btn = document.createElement('BUTTON');
@@ -133,7 +135,7 @@ const listMakerProjects = (text) => {
 
 	btnOpen.addEventListener('click', () => {
 		//prevents from opening other project if there is one on
-		if (btnOpen.textContent === 'Open' && projectsContainer.children[1] === undefined) {
+		if (btnOpen.textContent === 'Open' && projectsContainer.children[2] === undefined) {
 			currentProject = document.getElementById(item.id);
 			currentProject.classList.add('currentProject');
 			projectsContainer.appendChild(currentProject);
@@ -144,8 +146,6 @@ const listMakerProjects = (text) => {
 			for (let i = 0; i < nodes.length; i++) {
 				nodes[i].style.display = 'flex';
 			}
-
-			console.log(text.id);
 		} else if (btnOpen.textContent === 'Close') {
 			projectsListDiv.appendChild(currentProject);
 			currentProject.classList.toggle('currentProject');
@@ -201,22 +201,21 @@ const listMaker = (text) => {
 	}
 
 	//reveal details
-	if (text.description !== '') {
-		var btnReveal = document.createElement('BUTTON');
-		btnReveal.classList.add('btnReveal');
-		btnReveal.textContent = 'Details';
-		list.appendChild(btnReveal);
 
-		btnReveal.addEventListener('click', () => {
-			if (child[1].style.display != 'block' && child[1].textContent != '') {
-				child[1].style.display = 'block';
-				btnReveal.textContent = 'Hide';
-			} else {
-				child[1].style.display = 'none';
-				btnReveal.textContent = 'Details';
-			}
-		});
-	}
+	var btnReveal = document.createElement('BUTTON');
+	btnReveal.classList.add('btnReveal');
+	btnReveal.textContent = 'Details';
+	list.appendChild(btnReveal);
+
+	btnReveal.addEventListener('click', () => {
+		if (child[1].style.display != 'block' && child[1].textContent != '') {
+			child[1].style.display = 'block';
+			btnReveal.textContent = 'Hide';
+		} else {
+			child[1].style.display = 'none';
+			btnReveal.textContent = 'Details';
+		}
+	});
 
 	//delete button
 	var btn = document.createElement('BUTTON');
