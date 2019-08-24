@@ -96,8 +96,9 @@ submitButton.addEventListener('click', function(e) {
 
 //display projects
 const listMakerProjects = (text) => {
-	let item = document.createElement('p');
+	let item = document.createElement('div');
 
+	//don't display todos in projects list
 	let nodes = item.getElementsByClassName('list');
 	for (let i = 0; i < nodes.length; i++) {
 		nodes[i].style.display = 'none';
@@ -141,7 +142,7 @@ const listMakerProjects = (text) => {
 			btnOpen.textContent = 'Close';
 
 			for (let i = 0; i < nodes.length; i++) {
-				nodes[i].style.display = 'block';
+				nodes[i].style.display = 'flex';
 			}
 		} else if (btnOpen.textContent === 'Close') {
 			projectsListDiv.appendChild(currentProject);
@@ -197,17 +198,6 @@ const listMaker = (text) => {
 		list.style.display = 'none';
 	}
 
-	//delete button
-	var btn = document.createElement('BUTTON');
-	btn.classList.add('btn-delete-todo');
-	btn.textContent = 'Delete';
-	list.appendChild(btn);
-
-	btn.addEventListener('click', () => {
-		deleteList(text.title, text.id);
-		list.remove();
-	});
-
 	//reveal details
 	if (text.description !== '') {
 		var btnReveal = document.createElement('BUTTON');
@@ -225,6 +215,17 @@ const listMaker = (text) => {
 			}
 		});
 	}
+
+	//delete button
+	var btn = document.createElement('BUTTON');
+	btn.classList.add('btn-delete-todo');
+	btn.textContent = 'Delete';
+	list.appendChild(btn);
+
+	btn.addEventListener('click', () => {
+		deleteList(text.title, text.id);
+		list.remove();
+	});
 };
 
 //Checks which button is checked
