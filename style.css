@@ -7,6 +7,7 @@
 	display: flex;
 	flex-direction: row;
 	width: 100%;
+	margin-top: 40px;
 }
 
 #projectsContainer {
@@ -43,6 +44,7 @@
 .list {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
 	border: 1px solid #222;
 	padding: 20px;
 }
@@ -73,6 +75,10 @@
 	align-self: center;
 	max-width: 120px;
 	height: 20px;
+}
+
+.btn-delete {
+	max-width: 120px;
 }
 
 
