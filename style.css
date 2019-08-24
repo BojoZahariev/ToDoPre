@@ -40,20 +40,17 @@
 	display: block;
 }
 
-.projectDiv {
-	border: 1px solid #3f583d;
-
-}
-
 .list {
+	display: flex;
+	flex-direction: row;
 	border: 1px solid #222;
 	padding: 20px;
-
 }
 
 .item {
 	display: inline;
-	padding: 20px;
+	padding: 0px 20px;
+	align-self: center;
 }
 
 
@@ -70,6 +67,14 @@
 #item1NewProject {
 	text-transform: uppercase;
 }
+
+.btn-delete-todo {
+	display: inline-block;
+	align-self: center;
+	max-width: 120px;
+	height: 20px;
+}
+
 
 
 /*Radio Buttons*/
