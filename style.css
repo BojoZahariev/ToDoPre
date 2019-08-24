@@ -37,6 +37,11 @@
 	border: 1px solid red;
 }
 
+h2 {
+	color: #222;
+	font-weight: bold;
+}
+
 .backToList {
 	display: block;
 }
@@ -44,15 +49,16 @@
 .list {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+
 	border: 1px solid #222;
 	padding: 20px;
 }
 
 .item {
-	display: inline;
 	padding: 0px 20px;
 	align-self: center;
+	width: 30%;
+
 }
 
 
@@ -79,6 +85,12 @@
 
 .btn-delete {
 	max-width: 120px;
+}
+
+.btnReveal {
+	max-width: 120px;
+	height: 20px;
+	align-self: center;
 }
 
 
