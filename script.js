@@ -51,16 +51,16 @@ class ProjectToDos {
 //Submit new project
 submitNewProject.addEventListener('click', function(e) {
 	e.preventDefault();
+	if (item1NewProject.value !== '') {
+		let projectMain = new Project(item1NewProject.value, 'project', projectsListDiv.id, itemsArray.length);
+		itemsArray.push(projectMain);
 
-	let projectMain = new Project(item1NewProject.value, 'project', projectsListDiv.id, itemsArray.length);
+		localStorage.setItem('items', JSON.stringify(itemsArray));
+		listMakerProjects(projectMain);
 
-	itemsArray.push(projectMain);
-
-	localStorage.setItem('items', JSON.stringify(itemsArray));
-	listMakerProjects(projectMain);
-
-	item1NewProject.value = '';
-	formContainerNewProject.style.display = 'none';
+		item1NewProject.value = '';
+		formContainerNewProject.style.display = 'none';
+	}
 });
 
 //Submit todo
@@ -104,7 +104,7 @@ const listMakerProjects = (text) => {
 		nodes[i].style.display = 'none';
 	}
 
-	item.id = text.title;
+	item.id = text.id;
 	projectsListDiv.appendChild(item);
 	item.textContent = text.title;
 
@@ -144,6 +144,8 @@ const listMakerProjects = (text) => {
 			for (let i = 0; i < nodes.length; i++) {
 				nodes[i].style.display = 'flex';
 			}
+
+			console.log(text.id);
 		} else if (btnOpen.textContent === 'Close') {
 			projectsListDiv.appendChild(currentProject);
 			currentProject.classList.toggle('currentProject');
@@ -258,22 +260,6 @@ function deleteList(listTitle, identification) {
 
 	localStorage.setItem('items', JSON.stringify(itemsArray));
 }
-
-/*
-//initial
-initialProject = new Project('main', 'project', itemsArray.length);
-listMakerProjects(initialProject);
-initialToDo = new ProjectToDos(
-	'do stuff',
-	'do everything',
-	input3.value,
-	checked(),
-	'todo',
-	currentProject.id,
-	itemsArray.length
-);
-listMaker(initialToDo);
-*/
 
 //Display after reload
 data.forEach((item) => {
