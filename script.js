@@ -110,7 +110,7 @@ const listMakerProjects = (text) => {
 	//delete button
 	var btn = document.createElement('BUTTON');
 	btn.classList.add('btn-delete');
-	btn.textContent = 'Delete';
+	btn.textContent = 'Delete Project';
 	item.appendChild(btn);
 
 	btn.addEventListener('click', () => {
@@ -166,7 +166,6 @@ input2.addEventListener('click', function(e) {
 //display todos
 const listMaker = (text) => {
 	currentProject = document.getElementById(text.current);
-	//if (currentProject !== null) {
 	let list = document.createElement('div');
 	list.classList.add('list');
 	for (let i = 0; i < 4; i++) {
@@ -205,7 +204,7 @@ const listMaker = (text) => {
 	//reveal
 	var btnReveal = document.createElement('BUTTON');
 	btnReveal.classList.add('btnReveal');
-	btnReveal.textContent = 'Reveal';
+	btnReveal.textContent = 'Details';
 	list.appendChild(btnReveal);
 
 	btnReveal.addEventListener('click', () => {
@@ -214,10 +213,9 @@ const listMaker = (text) => {
 			btnReveal.textContent = 'Hide';
 		} else {
 			child[1].style.display = 'none';
-			btnReveal.textContent = 'Reveal';
+			btnReveal.textContent = 'Details';
 		}
 	});
-	//}
 };
 
 //Checks which button is checked
