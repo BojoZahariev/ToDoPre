@@ -180,8 +180,15 @@ const listMaker = (text) => {
 	child[1].style.display = 'none';
 	//edit
 	child[1].contentEditable = 'true';
-	child[2].textContent = text.dueDate;
+	child[2].textContent = 'Due Date ' + text.dueDate;
 	child[3].textContent = text.priority;
+	if (text.priority === 'Can Wait') {
+		child[3].style.color = 'green';
+	} else if (text.priority === 'ASAP') {
+		child[3].style.color = 'orange';
+	} else {
+		child[3].style.color = 'red';
+	}
 
 	currentProject.appendChild(list);
 
@@ -192,7 +199,7 @@ const listMaker = (text) => {
 
 	//delete button
 	var btn = document.createElement('BUTTON');
-	btn.classList.add('btn-delete');
+	btn.classList.add('btn-delete-todo');
 	btn.textContent = 'Delete';
 	list.appendChild(btn);
 
@@ -201,21 +208,23 @@ const listMaker = (text) => {
 		list.remove();
 	});
 
-	//reveal
-	var btnReveal = document.createElement('BUTTON');
-	btnReveal.classList.add('btnReveal');
-	btnReveal.textContent = 'Details';
-	list.appendChild(btnReveal);
+	//reveal details
+	if (text.description !== '') {
+		var btnReveal = document.createElement('BUTTON');
+		btnReveal.classList.add('btnReveal');
+		btnReveal.textContent = 'Details';
+		list.appendChild(btnReveal);
 
-	btnReveal.addEventListener('click', () => {
-		if (child[1].style.display != 'block' && child[1].textContent != '') {
-			child[1].style.display = 'block';
-			btnReveal.textContent = 'Hide';
-		} else {
-			child[1].style.display = 'none';
-			btnReveal.textContent = 'Details';
-		}
-	});
+		btnReveal.addEventListener('click', () => {
+			if (child[1].style.display != 'block' && child[1].textContent != '') {
+				child[1].style.display = 'block';
+				btnReveal.textContent = 'Hide';
+			} else {
+				child[1].style.display = 'none';
+				btnReveal.textContent = 'Details';
+			}
+		});
+	}
 };
 
 //Checks which button is checked
