@@ -100,7 +100,7 @@ const listMakerProjects = (text) => {
 
 	let nodes = item.getElementsByClassName('list');
 	for (let i = 0; i < nodes.length; i++) {
-		nodes[i].style.color = 'red';
+		nodes[i].style.display = 'none';
 	}
 
 	item.id = text.title;
@@ -141,7 +141,7 @@ const listMakerProjects = (text) => {
 			btnOpen.textContent = 'Close';
 
 			for (let i = 0; i < nodes.length; i++) {
-				nodes[i].style.color = 'initial';
+				nodes[i].style.display = 'block';
 			}
 		} else if (btnOpen.textContent === 'Close') {
 			projectsListDiv.appendChild(currentProject);
@@ -152,7 +152,7 @@ const listMakerProjects = (text) => {
 			btnOpen.textContent = 'Open';
 
 			for (let i = 0; i < nodes.length; i++) {
-				nodes[i].style.color = 'red';
+				nodes[i].style.display = 'none';
 			}
 		}
 	});
@@ -187,7 +187,7 @@ const listMaker = (text) => {
 
 	//display only ToDos when the project is opened
 	if (list.parentNode !== listContainer && listContainer.style.display !== 'none') {
-		list.style.color = 'red';
+		list.style.display = 'none';
 	}
 
 	//delete button
