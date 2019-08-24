@@ -245,36 +245,10 @@ function deleteList(listTitle, identification) {
 		}
 	}
 
-	console.log('1 ' + itemsArray);
+	//clear all the orphaned todos if a project is deleted
 	itemsArray = itemsArray.filter((element) => document.getElementById(element.current) !== null);
 
 	localStorage.setItem('items', JSON.stringify(itemsArray));
-
-	console.log(itemsArray);
-
-	/*
-	itemsArray.forEach((item) => {
-		let a;
-		if (document.getElementById(item.current) === null) {
-			console.log(item);
-			a = itemsArray.indexOf(item);
-			console.log(a);
-		}
-		//itemsArray.splice([ a ], 1);
-		localStorage.setItem('items', JSON.stringify(itemsArray));
-	});
-
-	console.log('exit');
-*/
-	/*
-	for (let i = 0; i < itemsArray.length; i++) {
-		if (document.getElementById(itemsArray[i].current) === null) {
-			console.log(itemsArray[i]);
-			itemsArray.splice([ i ], 1);
-			localStorage.setItem('items', JSON.stringify(itemsArray));
-		}
-	}
-	*/
 }
 
 /*
