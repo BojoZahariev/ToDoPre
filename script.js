@@ -60,6 +60,8 @@ submitNewProject.addEventListener('click', function(e) {
 
 		item1NewProject.value = '';
 		formContainerNewProject.style.display = 'none';
+	} else {
+		formContainerNewProject.style.display = 'none';
 	}
 });
 
@@ -254,7 +256,7 @@ const checked = () => {
 
 //new Project button
 newProjectButton.addEventListener('click', function(e) {
-	formContainerNewProject.style.display = 'block';
+	formContainerNewProject.style.display = 'flex';
 });
 
 //Delete
