@@ -14,14 +14,77 @@ input {
 #item1 {
 	text-transform: uppercase;
 	width: 300px;
-	margin-right: 20px;
+	margin-right: 15px;
 	outline: none;
+	border: none;
+	border-bottom: 1px solid #222;
 }
 
 #item2 {
+	text-transform: uppercase;
 	width: 300px;
 	margin-right: 20px;
+	border: none;
+	border-bottom: 1px solid #222;
 }
+
+#item3 {
+	border: none;
+	border-bottom: 1px solid #222;
+
+}
+
+/*Radio Buttons*/
+
+#radioBigConatiner {
+	margin: 0px 20px;
+}
+
+/* The small container */
+.radioContainer {
+	display: inline-block;
+	position: relative;
+	padding-left: 35px;
+	cursor: pointer;
+	font-size: 20px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radioContainer input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: #eee;
+	border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radioContainer:hover input~.checkmark {
+	background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radioContainer input:checked~.checkmark {
+	background-color: #2196f3;
+}
+
+#submit {
+	height: 30px;
+}
+
 
 #small-container {
 	display: flex;
@@ -62,7 +125,10 @@ input {
 	padding: 20px;
 }
 
-.projectDiv {
+.projectTitleWrap {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
 	padding: 10px;
 }
 
@@ -80,6 +146,7 @@ h1 {
 	display: flex;
 	flex-direction: row;
 	padding: 20px;
+	justify-content: space-between;
 }
 
 .item {
@@ -106,60 +173,11 @@ h1 {
 
 .btn-delete {
 	max-width: 120px;
+	margin-left: 10px;
 }
 
 .btnReveal {
 	max-width: 120px;
 	height: 20px;
 	align-self: center;
-}
-
-
-
-/*Radio Buttons*/
-
-#radioBigConatiner {
-	margin: 0px 20px;
-}
-
-/* The small container */
-.radioContainer {
-	display: inline-block;
-	position: relative;
-	padding-left: 35px;
-	margin-bottom: 12px;
-	cursor: pointer;
-	font-size: 22px;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-
-/* Hide the browser's default radio button */
-.radioContainer input {
-	position: absolute;
-	opacity: 0;
-	cursor: pointer;
-}
-
-/* Create a custom radio button */
-.checkmark {
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 25px;
-	width: 25px;
-	background-color: #eee;
-	border-radius: 50%;
-}
-
-/* On mouse-over, add a grey background color */
-.radioContainer:hover input~.checkmark {
-	background-color: #ccc;
-}
-
-/* When the radio button is checked, add a blue background */
-.radioContainer input:checked~.checkmark {
-	background-color: #2196f3;
 }
