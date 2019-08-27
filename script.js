@@ -111,22 +111,9 @@ const listMakerProjects = (text) => {
 	projectsListDiv.appendChild(item);
 	itemTitle.textContent = text.title;
 
-	//delete button
-	var btn = document.createElement('BUTTON');
-	btn.classList.add('btn-delete');
-	btn.textContent = 'Delete Project';
-	item.appendChild(btn);
-
-	btn.addEventListener('click', () => {
-		item.remove();
-		deleteList(text.title, text.id);
-
-		//gets back the everyday tasks
-		if (currentProject !== listContainer) {
-			currentProject = listContainer;
-			listContainer.style.display = 'block';
-		}
-	});
+	let buttonsDiv = document.createElement('div');
+	let projectTitleWrap = document.createElement('div');
+	projectTitleWrap.classList.add('projectTitleWrap');
 
 	//open/close
 	let btnOpen = document.createElement('BUTTON');
@@ -160,6 +147,30 @@ const listMakerProjects = (text) => {
 			}
 		}
 	});
+
+	//delete button
+	var btn = document.createElement('BUTTON');
+	btn.classList.add('btn-delete');
+	btn.textContent = 'Delete Project';
+	item.appendChild(btn);
+
+	btn.addEventListener('click', () => {
+		item.remove();
+		deleteList(text.title, text.id);
+
+		//gets back the everyday tasks
+		if (currentProject !== listContainer) {
+			currentProject = listContainer;
+			listContainer.style.display = 'block';
+		}
+	});
+
+	buttonsDiv.appendChild(btnOpen);
+	buttonsDiv.appendChild(btn);
+	item.appendChild(buttonsDiv);
+	projectTitleWrap.appendChild(itemTitle);
+	projectTitleWrap.appendChild(buttonsDiv);
+	item.appendChild(projectTitleWrap);
 };
 
 //clear the description default on click
@@ -184,7 +195,7 @@ const listMaker = (text) => {
 	child[1].style.display = 'none';
 	//edit
 	child[1].contentEditable = 'true';
-	child[2].textContent = 'Due Date ' + text.dueDate;
+	child[2].textContent = 'Due: ' + text.dueDate;
 	child[3].textContent = text.priority;
 	if (text.priority === 'Can Wait') {
 		child[3].style.color = 'green';
