@@ -139,6 +139,7 @@ h2,
 h1 {
 	color: #222;
 	font-weight: bold;
+	padding: 10px;
 }
 
 .backToList {
@@ -159,8 +160,17 @@ h1 {
 
 }
 
+#newProjectFormContainer {
+	display: flex;
+	justify-content: space-between;
+}
+
 #formContainerNewProject {
 	display: none;
+}
+
+#submitNewProject {
+	display: inline-block;
 }
 
 #item1NewProject {
