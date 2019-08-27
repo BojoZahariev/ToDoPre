@@ -42,6 +42,9 @@ input {
 
 #projectsListDiv {
 	margin-top: 20px;
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: flex-end;
 }
 
 #listContainer,
