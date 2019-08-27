@@ -35,17 +35,7 @@ input {
 	flex-basis: 70%;
 }
 
-#projectsListContainer {
-	flex-basis: 30%;
-	padding: 0px 20px;
-}
 
-#projectsListDiv {
-	margin-top: 20px;
-	display: flex;
-	flex-direction: column-reverse;
-	justify-content: flex-end;
-}
 
 #listContainer,
 .currentProject {
@@ -56,6 +46,24 @@ input {
 	height: 80vh;
 	border: 1px solid #222;
 	overflow: auto;
+}
+
+#projectsListContainer {
+	flex-basis: 30%;
+	padding: 0px 20px;
+}
+
+#projectsListDiv {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: flex-end;
+	border: 1px solid #222;
+	padding: 20px;
+}
+
+.projectDiv {
+	padding: 10px;
 }
 
 h2,
