@@ -106,6 +106,7 @@ const listMakerProjects = (text) => {
 	}
 
 	item.id = text.id;
+	item.classList.add('projectDiv');
 	item.appendChild(itemTitle);
 	projectsListDiv.appendChild(item);
 	itemTitle.textContent = text.title;
