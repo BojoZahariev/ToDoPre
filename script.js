@@ -49,7 +49,7 @@ class ProjectToDos {
 }
 
 //Submit new project
-submitNewProject.addEventListener('click', function(e) {
+submitNewProject.addEventListener('click', function (e) {
 	e.preventDefault();
 	if (item1NewProject.value !== '') {
 		let projectMain = new Project(item1NewProject.value, 'project', projectsListDiv.id, itemsArray.length);
@@ -66,7 +66,7 @@ submitNewProject.addEventListener('click', function(e) {
 });
 
 //Submit todo
-submitButton.addEventListener('click', function(e) {
+submitButton.addEventListener('click', function (e) {
 	e.preventDefault();
 	if (input1.value !== '') {
 		if (input2.value === 'Description') {
@@ -175,10 +175,6 @@ const listMakerProjects = (text) => {
 	item.appendChild(projectTitleWrap);
 };
 
-//clear the description default on click
-input2.addEventListener('click', function(e) {
-	input2.value = '';
-});
 
 //display todos
 const listMaker = (text) => {
@@ -255,7 +251,7 @@ const checked = () => {
 };
 
 //new Project button
-newProjectButton.addEventListener('click', function(e) {
+newProjectButton.addEventListener('click', function (e) {
 	formContainerNewProject.style.display = 'flex';
 });
 
@@ -263,7 +259,7 @@ newProjectButton.addEventListener('click', function(e) {
 function deleteList(listTitle, identification) {
 	for (let i = 0; i < itemsArray.length; i++) {
 		if (itemsArray[i].title === listTitle && itemsArray[i].id === identification) {
-			itemsArray.splice([ i ], 1);
+			itemsArray.splice([i], 1);
 			localStorage.setItem('items', JSON.stringify(itemsArray));
 		}
 	}
