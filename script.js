@@ -216,16 +216,19 @@ const listMaker = (text) => {
 	btnReveal.classList.add('btnReveal');
 	btnReveal.textContent = 'Details';
 	list.appendChild(btnReveal);
-
-	btnReveal.addEventListener('click', () => {
-		if (child[1].style.display != 'block' && child[1].textContent != '') {
-			child[1].style.display = 'block';
-			btnReveal.textContent = 'Hide';
-		} else {
-			child[1].style.display = 'none';
-			btnReveal.textContent = 'Details';
-		}
-	});
+	btnReveal.style.visibility = 'hidden';
+	if (text.description !== '') {
+		btnReveal.style.visibility = "visible";
+		btnReveal.addEventListener('click', () => {
+			if (child[1].style.display != 'block' && child[1].textContent != '') {
+				child[1].style.display = 'block';
+				btnReveal.textContent = 'Hide';
+			} else {
+				child[1].style.display = 'none';
+				btnReveal.textContent = 'Details';
+			}
+		});
+	}
 
 	//delete button
 	var btn = document.createElement('BUTTON');
