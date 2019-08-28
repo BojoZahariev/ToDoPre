@@ -142,7 +142,7 @@ const listMakerProjects = (text) => {
 			currentProject.classList.toggle('currentProject');
 			currentProject = listContainer;
 			//gets back the everyday tasks
-			listContainer.style.display = 'block';
+			listContainer.style.display = 'flex';
 			btnOpen.textContent = 'Open';
 
 			for (let i = 0; i < nodes.length; i++) {
@@ -201,7 +201,7 @@ const listMaker = (text) => {
 	} else if (text.priority === 'ASAP') {
 		child[3].style.color = 'orange';
 	} else {
-		child[3].style.color = 'red';
+		child[3].style.color = '#e63946';
 	}
 
 	currentProject.appendChild(list);
