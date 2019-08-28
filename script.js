@@ -114,11 +114,12 @@ const listMakerProjects = (text) => {
 	itemTitle.textContent = text.title;
 
 	let buttonsDiv = document.createElement('div');
+	buttonsDiv.classList.add('buttonsDiv');
 	let projectTitleWrap = document.createElement('div');
 	projectTitleWrap.classList.add('projectTitleWrap');
 
 	//open/close
-	let btnOpen = document.createElement('BUTTON');
+	let btnOpen = document.createElement('p');
 	btnOpen.classList.add('btn-delete');
 	btnOpen.textContent = 'Open';
 	item.appendChild(btnOpen);
@@ -151,7 +152,7 @@ const listMakerProjects = (text) => {
 	});
 
 	//delete button
-	var btn = document.createElement('BUTTON');
+	var btn = document.createElement('p');
 	btn.classList.add('btn-delete');
 	btn.textContent = 'Delete Project';
 	item.appendChild(btn);
@@ -212,7 +213,7 @@ const listMaker = (text) => {
 
 	//reveal details
 
-	var btnReveal = document.createElement('BUTTON');
+	var btnReveal = document.createElement('p');
 	btnReveal.classList.add('btnReveal');
 	btnReveal.textContent = 'Details';
 	list.appendChild(btnReveal);
@@ -231,7 +232,7 @@ const listMaker = (text) => {
 	}
 
 	//delete button
-	var btn = document.createElement('BUTTON');
+	var btn = document.createElement('p');
 	btn.classList.add('btn-delete-todo');
 	btn.textContent = 'Delete';
 	list.appendChild(btn);
