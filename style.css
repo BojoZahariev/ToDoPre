@@ -1,6 +1,7 @@
 body {
 	font-family: 'Lato', sans-serif;
-	background-color: #EFF6E0;
+	background-color: #eff6e0;
+	height: 100vh;
 }
 
 #formContainer {
@@ -28,7 +29,7 @@ input {
 	background-color: #f1faee;
 	padding: 10px;
 	border-radius: 7px;
-	color: #01161E;
+	color: #01161e;
 	font-weight: 100;
 	font-family: 'Lato', sans-serif;
 }
@@ -43,7 +44,7 @@ input {
 	background-color: #f1faee;
 	padding: 12px;
 	border-radius: 5px;
-	color: #01161E;
+	color: #01161e;
 	font-weight: 100;
 	font-family: 'Lato', sans-serif;
 }
@@ -76,7 +77,7 @@ input {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	color: #EFF6E0;
+	color: #eff6e0;
 }
 
 /* Hide the browser's default radio button */
@@ -98,20 +99,20 @@ input {
 }
 
 /* On mouse-over, add a grey background color */
-.radioContainer:hover input~.checkmark {
+.radioContainer:hover input ~ .checkmark {
 	background-color: #ccc;
 }
 
 /* When the radio button is checked, add a blue background */
-#radio1:checked~.checkmark {
-	background-color: #A2E3C4;
+#radio1:checked ~ .checkmark {
+	background-color: #a2e3c4;
 }
 
-#radio2:checked~.checkmark {
-	background-color: #CC5803;
+#radio2:checked ~ .checkmark {
+	background-color: #cc5803;
 }
 
-#radio3:checked~.checkmark {
+#radio3:checked ~ .checkmark {
 	background-color: #e63946;
 }
 
@@ -142,7 +143,7 @@ input {
 	width: 100%;
 	height: 70vh;
 	overflow: auto;
-	background-color: #AEC3B0;
+	background-color: #aec3b0;
 	padding: 20px 0px;
 	border-radius: 10px;
 }
@@ -153,13 +154,15 @@ input {
 }
 
 #projectsListDiv {
-	margin-top: 20px;
+	margin-top: 15px;
 	display: flex;
 	flex-direction: column-reverse;
 	justify-content: flex-end;
 	padding: 20px;
-	background-color: #AEC3B0;
+	background-color: #aec3b0;
 	border-radius: 10px;
+	height: 65vh;
+	overflow: auto;
 }
 
 .projectTitleWrap {
@@ -201,7 +204,7 @@ h1 {
 	flex-direction: row;
 	padding: 20px;
 	justify-content: space-between;
-	color: #01161E;
+	color: #01161e;
 	font-size: 18px;
 }
 
@@ -241,7 +244,7 @@ h1 {
 	padding: 5px 10px;
 	cursor: pointer;
 	margin-left: 10px;
-	background-color: #EFF6E0;
+	background-color: #eff6e0;
 	border-radius: 5px;
 	border: 1px solid #598392;
 }
