@@ -9,7 +9,7 @@ const radio2 = document.getElementById('radio2');
 const radio3 = document.getElementById('radio3');
 const submitButton = document.getElementById('submit');
 const listContainer = document.getElementById('listContainer');
-
+const firstTitle = document.getElementById('firstTitle');
 const projectsContainer = document.getElementById('projectsContainer');
 const formContainerNewProject = document.getElementById('formContainerNewProject');
 const projectsListDiv = document.getElementById('projectsListDiv');
@@ -49,7 +49,7 @@ class ProjectToDos {
 }
 
 //Submit new project
-submitNewProject.addEventListener('click', function (e) {
+submitNewProject.addEventListener('click', function(e) {
 	e.preventDefault();
 	if (item1NewProject.value !== '') {
 		let projectMain = new Project(item1NewProject.value, 'project', projectsListDiv.id, itemsArray.length);
@@ -66,7 +66,7 @@ submitNewProject.addEventListener('click', function (e) {
 });
 
 //Submit todo
-submitButton.addEventListener('click', function (e) {
+submitButton.addEventListener('click', function(e) {
 	e.preventDefault();
 	if (input1.value !== '') {
 		if (input2.value === 'Description') {
@@ -133,6 +133,8 @@ const listMakerProjects = (text) => {
 			//displays only the work project
 			listContainer.style.display = 'none';
 			btnOpen.textContent = 'Close';
+			//change the h1 on top
+			firstTitle.textContent = text.title;
 
 			for (let i = 0; i < nodes.length; i++) {
 				nodes[i].style.display = 'flex';
@@ -144,6 +146,8 @@ const listMakerProjects = (text) => {
 			//gets back the everyday tasks
 			listContainer.style.display = 'flex';
 			btnOpen.textContent = 'Open';
+			//change the h1 on top
+			firstTitle.textContent = 'EVERYDAY TASKS';
 
 			for (let i = 0; i < nodes.length; i++) {
 				nodes[i].style.display = 'none';
@@ -175,7 +179,6 @@ const listMakerProjects = (text) => {
 	projectTitleWrap.appendChild(buttonsDiv);
 	item.appendChild(projectTitleWrap);
 };
-
 
 //display todos
 const listMaker = (text) => {
@@ -219,7 +222,7 @@ const listMaker = (text) => {
 	list.appendChild(btnReveal);
 	btnReveal.style.visibility = 'hidden';
 	if (text.description !== '') {
-		btnReveal.style.visibility = "visible";
+		btnReveal.style.visibility = 'visible';
 		btnReveal.addEventListener('click', () => {
 			if (child[1].style.display != 'block' && child[1].textContent != '') {
 				child[1].style.display = 'block';
@@ -255,7 +258,7 @@ const checked = () => {
 };
 
 //new Project button
-newProjectButton.addEventListener('click', function (e) {
+newProjectButton.addEventListener('click', function(e) {
 	formContainerNewProject.style.display = 'flex';
 });
 
@@ -263,7 +266,7 @@ newProjectButton.addEventListener('click', function (e) {
 function deleteList(listTitle, identification) {
 	for (let i = 0; i < itemsArray.length; i++) {
 		if (itemsArray[i].title === listTitle && itemsArray[i].id === identification) {
-			itemsArray.splice([i], 1);
+			itemsArray.splice([ i ], 1);
 			localStorage.setItem('items', JSON.stringify(itemsArray));
 		}
 	}
