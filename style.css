@@ -28,6 +28,9 @@ input {
 	background-color: #f1faee;
 	padding: 10px;
 	border-radius: 7px;
+	color: #01161E;
+	font-weight: 100;
+	font-family: 'Lato', sans-serif;
 }
 
 #item2 {
@@ -38,12 +41,16 @@ input {
 	outline: none;
 	border: none;
 	background-color: #f1faee;
-	padding: 10px;
+	padding: 12px;
 	border-radius: 5px;
+	color: #01161E;
+	font-weight: 100;
+	font-family: 'Lato', sans-serif;
 }
 
 #item3,
 #item1NewProject {
+	font-size: 18px;
 	border: none;
 	outline: none;
 	background-color: #f1faee;
@@ -237,6 +244,10 @@ h1 {
 	background-color: #EFF6E0;
 	border-radius: 5px;
 	border: 1px solid #598392;
+}
+
+#submit {
+	padding: 10px;
 }
 
 .btn-delete-todo:hover,
