@@ -96,8 +96,16 @@ input {
 }
 
 /* When the radio button is checked, add a blue background */
-.radioContainer input:checked~.checkmark {
-	background-color: #598392;
+#radio1:checked~.checkmark {
+	background-color: #A2E3C4;
+}
+
+#radio2:checked~.checkmark {
+	background-color: #CC5803;
+}
+
+#radio3:checked~.checkmark {
+	background-color: #e63946;
 }
 
 #submit {
