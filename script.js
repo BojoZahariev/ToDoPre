@@ -200,9 +200,9 @@ const listMaker = (text) => {
 	child[2].textContent = 'Due: ' + text.dueDate;
 	child[3].textContent = text.priority;
 	if (text.priority === 'Can Wait') {
-		child[3].style.color = 'green';
+		child[3].style.color = '#A2E3C4';
 	} else if (text.priority === 'ASAP') {
-		child[3].style.color = 'orange';
+		child[3].style.color = '#CC5803';
 	} else {
 		child[3].style.color = '#e63946';
 	}
