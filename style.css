@@ -140,7 +140,7 @@ input {
 	flex-direction: column;
 	flex-wrap: no wrap;
 	width: 100%;
-	min-height: 300px;
+	height: 70vh;
 	overflow: auto;
 	background-color: #AEC3B0;
 	padding: 20px 0px;
