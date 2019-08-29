@@ -198,8 +198,11 @@ const listMaker = (text) => {
 	//edit
 	child[1].contentEditable = 'true';
 	//shows Today if the duedate is today
+	input3.valueAsDate = new Date();
 	if (input3.value === text.dueDate) {
 		child[2].textContent = 'Due: ' + 'Today';
+	} else if (input3.value > text.dueDate) {
+		child[2].textContent = 'Overdue';
 	} else {
 		child[2].textContent = 'Due: ' + text.dueDate;
 	}
