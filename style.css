@@ -11,6 +11,7 @@ body {
 	margin: 20px;
 	background-color: #124559;
 	padding: 20px;
+	border-radius: 10px;
 }
 
 input {
@@ -96,7 +97,7 @@ input {
 
 /* When the radio button is checked, add a blue background */
 .radioContainer input:checked~.checkmark {
-	background-color: #457b9d;
+	background-color: #598392;
 }
 
 #submit {
@@ -128,6 +129,7 @@ input {
 	overflow: auto;
 	background-color: #AEC3B0;
 	padding: 20px 0px;
+	border-radius: 10px;
 }
 
 #projectsListContainer {
@@ -140,9 +142,9 @@ input {
 	display: flex;
 	flex-direction: column-reverse;
 	justify-content: flex-end;
-
 	padding: 20px;
 	background-color: #AEC3B0;
+	border-radius: 10px;
 }
 
 .projectTitleWrap {
@@ -230,5 +232,5 @@ h1 {
 #submit,
 #newProjectButton,
 #submitNewProject {
-	border: 1px solid #e63946;
+	border: 1px solid #598392;
 }
