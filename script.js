@@ -147,7 +147,7 @@ const listMakerProjects = (text) => {
 			listContainer.style.display = 'flex';
 			btnOpen.textContent = 'Open';
 			//change the h1 on top
-			firstTitle.textContent = 'EVERYDAY TASKS';
+			firstTitle.textContent = 'THINGS TO DO';
 
 			for (let i = 0; i < nodes.length; i++) {
 				nodes[i].style.display = 'none';
