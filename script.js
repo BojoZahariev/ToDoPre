@@ -197,7 +197,12 @@ const listMaker = (text) => {
 	child[1].style.display = 'none';
 	//edit
 	child[1].contentEditable = 'true';
-	child[2].textContent = 'Due: ' + text.dueDate;
+	//shows Today if the duedate is today
+	if (input3.value === text.dueDate) {
+		child[2].textContent = 'Due: ' + 'Today';
+	} else {
+		child[2].textContent = 'Due: ' + text.dueDate;
+	}
 	child[3].textContent = text.priority;
 	if (text.priority === 'Can Wait') {
 		child[3].style.color = '#A2E3C4';
