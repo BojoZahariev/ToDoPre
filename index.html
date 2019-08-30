@@ -12,47 +12,50 @@
 </head>
 
 <body>
+    <div id="content">
+        <div id="wrapper">
+            <form id="formContainer">
+                <input id="item1" type="text" placeholder="Title">
+                <textarea id="item2" rows="1" cols="20" placeholder="Details"></textarea>
+                <input id="item3" type="date">
 
-    <form id="formContainer">
-        <input id="item1" type="text" placeholder="Title">
-        <textarea id="item2" rows="1" cols="20" placeholder="Description"></textarea>
-        <input id="item3" type="date">
-
-        <div id="radioBigConatiner">
-            <label class="radioContainer">Can Wait
-                <input id='radio1' value="Can Wait" type="radio" checked name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="radioContainer">ASAP
-                <input id='radio2' value="ASAP" type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="radioContainer">URGENT
-                <input id='radio3' value="URGENT" type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
-        </div>
-
-        <p id="submit">SUBMIT</p>
-    </form>
-
-    <div id="small-container">
-        <div id="projectsContainer">
-            <h1 class="titles" id="firstTitle">THINGS TO DO</h1>
-            <div id="listContainer"></div>
-        </div>
-
-        <div id="projectsListContainer">
-            <div id="projectsBigContainer">
-                <h1 class="titles">PROJECTS</h1>
-                <div id="newProjectFormContainer">
-                    <p id="newProjectButton">NEW PROJECT</p>
-                    <form id="formContainerNewProject">
-                        <input id="item1NewProject" type="text" placeholder="Title">
-                        <p class="btn-delete" id="submitNewProject">SUBMIT</p>
-                    </form>
+                <div id="radioBigContainer">
+                    <label class="radioContainer">Can Wait
+                        <input id='radio1' value="Can Wait" type="radio" checked name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radioContainer">ASAP
+                        <input id='radio2' value="ASAP" type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radioContainer">URGENT
+                        <input id='radio3' value="URGENT" type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
                 </div>
-                <div id="projectsListDiv"></div>
+
+                <p id="submit">SUBMIT</p>
+            </form>
+
+            <div id="small-container">
+                <div id="projectsContainer">
+                    <h1 class="titles" id="firstTitle">THINGS TO DO</h1>
+                    <div id="listContainer"></div>
+                </div>
+
+                <div id="projectsListContainer">
+                    <div id="projectsBigContainer">
+                        <h1 class="titles">PROJECTS</h1>
+                        <div id="newProjectFormContainer">
+                            <p id="newProjectButton">NEW PROJECT</p>
+                            <form id="formContainerNewProject">
+                                <input id="item1NewProject" type="text" placeholder="Title">
+                                <p class="btn-delete" id="submitNewProject">SUBMIT</p>
+                            </form>
+                        </div>
+                        <div id="projectsListDiv"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
