@@ -195,6 +195,7 @@ const listMaker = (text) => {
 	child[1].style.display = 'none';
 	//edit
 	child[1].contentEditable = 'true';
+
 	//shows Today if the duedate is today
 	input3.valueAsDate = new Date();
 	if (input3.value === text.dueDate) {
@@ -220,8 +221,13 @@ const listMaker = (text) => {
 		list.style.display = 'none';
 	}
 
-	//reveal details
+	child[1].addEventListener('click', () => {
 
+		btnReveal.textContent = 'Save Changes';
+
+	});
+
+	//reveal details
 	var btnReveal = document.createElement('p');
 	btnReveal.classList.add('btnReveal');
 	btnReveal.textContent = 'Details';
@@ -233,6 +239,11 @@ const listMaker = (text) => {
 			if (child[1].style.display != 'block' && child[1].textContent != '') {
 				child[1].style.display = 'block';
 				btnReveal.textContent = 'Hide';
+				//use the same button to save changes
+			} else if (btnReveal.textContent === 'Save Changes') {
+				redactingFunction(text.title, text.id, child[1].textContent);
+				child[1].style.display = 'none';
+				btnReveal.textContent = 'Details';
 			} else {
 				child[1].style.display = 'none';
 				btnReveal.textContent = 'Details';
@@ -251,6 +262,16 @@ const listMaker = (text) => {
 		list.remove();
 	});
 };
+
+//redact content
+const redactingFunction = (listTitle, identification, content) => {
+	for (let i = 0; i < itemsArray.length; i++) {
+		if (itemsArray[i].title === listTitle && itemsArray[i].id === identification) {
+			itemsArray[i].description = content;
+			localStorage.setItem('items', JSON.stringify(itemsArray));
+		}
+	}
+}
 
 //Checks which button is checked
 const checked = () => {
