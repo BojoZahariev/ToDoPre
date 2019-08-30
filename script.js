@@ -222,9 +222,7 @@ const listMaker = (text) => {
 	}
 
 	child[1].addEventListener('click', () => {
-
 		btnReveal.textContent = 'Save Changes';
-
 	});
 
 	//reveal details
@@ -305,13 +303,16 @@ function deleteList(listTitle, identification) {
 }
 
 //Display after reload
-data.forEach((item) => {
-	if (item.type === 'project') {
-		listMakerProjects(item);
-	} else if (item.type === 'todo') {
-		listMaker(item);
-	}
-});
+const displayData = () => {
+	data.forEach((item) => {
+		if (item.type === 'project') {
+			listMakerProjects(item);
+		} else if (item.type === 'todo') {
+			listMaker(item);
+		}
+	});
+};
+displayData();
 
 //Current project div
 currentProject = listContainer;
@@ -319,16 +320,7 @@ currentProject = listContainer;
 //don't delete will use for webpack
 /*
 const mod = (() => {
-	class ProjectToDos {
-		constructor(title, description, dueDate, priority) {
-			this.title = title;
-			this.description = description;
-			this.dueDate = dueDate;
-			this.priority = priority;
-		}
 
-		
-	}
 
 	return {
 		ProjectToDos
