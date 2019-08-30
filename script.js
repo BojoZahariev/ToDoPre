@@ -1,4 +1,3 @@
-const clearButton = document.getElementById('clear');
 const input1 = document.getElementById('item1');
 const input2 = document.getElementById('item2');
 const input3 = document.getElementById('item3');
@@ -49,7 +48,7 @@ class ProjectToDos {
 }
 
 //Submit new project
-submitNewProject.addEventListener('click', function(e) {
+submitNewProject.addEventListener('click', function (e) {
 	e.preventDefault();
 	if (item1NewProject.value !== '') {
 		let projectMain = new Project(item1NewProject.value, 'project', projectsListDiv.id, itemsArray.length);
@@ -66,10 +65,10 @@ submitNewProject.addEventListener('click', function(e) {
 });
 
 //Submit todo
-submitButton.addEventListener('click', function(e) {
+submitButton.addEventListener('click', function (e) {
 	e.preventDefault();
 	if (input1.value !== '') {
-		if (input2.value === 'Description') {
+		if (input2.value === 'Details') {
 			input2.value = '';
 		}
 		let proj = new ProjectToDos(
@@ -81,8 +80,7 @@ submitButton.addEventListener('click', function(e) {
 			currentProject.id,
 			itemsArray.length
 		);
-		//don't delete use for webpack
-		//let proj = new mod.ProjectToDos(input1.value, input2.value, input3.value, checked());
+
 		itemsArray.push(proj);
 
 		localStorage.setItem('items', JSON.stringify(itemsArray));
@@ -90,7 +88,7 @@ submitButton.addEventListener('click', function(e) {
 
 		//reset to default after entry
 		input1.value = '';
-		input2.value = 'Description';
+		input2.value = 'Details';
 		input3.valueAsDate = new Date();
 		radio1.checked = true;
 	}
@@ -266,7 +264,7 @@ const checked = () => {
 };
 
 //new Project button
-newProjectButton.addEventListener('click', function(e) {
+newProjectButton.addEventListener('click', function (e) {
 	formContainerNewProject.style.display = 'flex';
 });
 
@@ -274,7 +272,7 @@ newProjectButton.addEventListener('click', function(e) {
 function deleteList(listTitle, identification) {
 	for (let i = 0; i < itemsArray.length; i++) {
 		if (itemsArray[i].title === listTitle && itemsArray[i].id === identification) {
-			itemsArray.splice([ i ], 1);
+			itemsArray.splice([i], 1);
 			localStorage.setItem('items', JSON.stringify(itemsArray));
 		}
 	}
