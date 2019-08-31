@@ -99,20 +99,20 @@ input {
 }
 
 /* On mouse-over, add a grey background color */
-.radioContainer:hover input ~ .checkmark {
+.radioContainer:hover input~.checkmark {
 	background-color: #ccc;
 }
 
 /* When the radio button is checked, add a blue background */
-#radio1:checked ~ .checkmark {
+#radio1:checked~.checkmark {
 	background-color: #a2e3c4;
 }
 
-#radio2:checked ~ .checkmark {
+#radio2:checked~.checkmark {
 	background-color: #cc5803;
 }
 
-#radio3:checked ~ .checkmark {
+#radio3:checked~.checkmark {
 	background-color: #e63946;
 }
 
@@ -125,6 +125,7 @@ input {
 #small-container {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: nowrap;
 	width: 100%;
 	margin-top: 40px;
 }
@@ -139,7 +140,7 @@ input {
 .currentProject {
 	display: flex;
 	flex-direction: column;
-	flex-wrap: no wrap;
+	flex-wrap: nowrap;
 	width: 100%;
 	height: 70vh;
 	overflow: auto;
@@ -272,4 +273,23 @@ h1 {
 	background-color: #eff6e0;
 	border-radius: 5px;
 	border: 1px solid #598392;
+}
+
+@media all and (max-width: 1320px) {
+	#small-container {
+		flex-wrap: wrap;
+	}
+
+	#projectsContainer {
+		flex-basis: 100%;
+	}
+
+	#projectsListContainer {
+		flex-basis: 100%;
+	}
+
+	#item3 {
+		font-size: 15px;
+
+	}
 }
