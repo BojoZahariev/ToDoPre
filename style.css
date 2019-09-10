@@ -49,7 +49,8 @@ input {
 }
 
 #item3 {
-	background: #f1faee url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+	background: #f1faee url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50%
+		no-repeat;
 }
 
 #item3::-webkit-inner-spin-button {
@@ -101,24 +102,22 @@ input {
 }
 
 /* On mouse-over, add a grey background color */
-.radioContainer:hover input~.checkmark {
+.radioContainer:hover input ~ .checkmark {
 	background-color: #ccc;
 }
 
 /* When the radio button is checked, add a blue background */
-#radio1:checked~.checkmark {
+#radio1:checked ~ .checkmark {
 	background-color: #a2e3c4;
 }
 
-#radio2:checked~.checkmark {
+#radio2:checked ~ .checkmark {
 	background-color: #cc5803;
 }
 
-#radio3:checked~.checkmark {
+#radio3:checked ~ .checkmark {
 	background-color: #e63946;
 }
-
-
 
 #small-container {
 	display: flex;
@@ -205,13 +204,29 @@ h1 {
 	justify-content: space-between;
 	color: #1d3557;
 	font-size: 18px;
+	perspective: 100px;
+	opacity: 0;
+	transform: rotateX(-90deg);
+	transition: all 0.5s cubic-bezier(.36, -0.64, .34, 1.76);
 }
+
+/*flip animation*/
+.show {
+	opacity: 1;
+	transform: none;
+	transition: all 0.5s cubic-bezier(.36, -0.64, .34, 1.76);
+}
+
+/*end of testing*/
 
 .item {
 	padding: 0px 20px;
 	align-self: center;
 	width: 30%;
 	position: relative;
+}
+.item:first-child {
+	font-weight: 900;
 }
 
 #newProjectFormContainer {
@@ -259,8 +274,6 @@ h1 {
 	border: 1px solid #222;
 }
 
-
-
 .btn-delete-todo:hover,
 .btnReveal:hover,
 .btn-delete:hover,
@@ -295,6 +308,5 @@ h1 {
 
 	#item3 {
 		font-size: 15px;
-
 	}
 }
