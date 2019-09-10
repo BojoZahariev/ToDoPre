@@ -188,6 +188,11 @@ const listMaker = (text) => {
 		item.classList.add('item');
 		list.appendChild(item);
 	}
+	
+	//for the animation effect
+	setTimeout(function () {
+		list.classList.add('show');
+	}, 20);
 
 	let child = list.querySelectorAll('p');
 	child[0].textContent = text.title;
