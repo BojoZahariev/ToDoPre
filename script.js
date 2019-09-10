@@ -192,7 +192,7 @@ const listMaker = (text) => {
 	//for the animation effect
 	setTimeout(function() {
 		list.classList.add('show');
-	}, 20);
+	}, 150);
 
 	let child = list.querySelectorAll('p');
 	child[0].textContent = text.title;
