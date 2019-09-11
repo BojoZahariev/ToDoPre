@@ -49,7 +49,8 @@ input {
 }
 
 #item3 {
-	background: #f1faee url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+	background: #f1faee url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50%
+		no-repeat;
 }
 
 #item3::-webkit-inner-spin-button {
@@ -101,20 +102,20 @@ input {
 }
 
 /* On mouse-over, add a grey background color */
-.radioContainer:hover input~.checkmark {
+.radioContainer:hover input ~ .checkmark {
 	background-color: #ccc;
 }
 
 /* When the radio button is checked, add a blue background */
-#radio1:checked~.checkmark {
+#radio1:checked ~ .checkmark {
 	background-color: #a2e3c4;
 }
 
-#radio2:checked~.checkmark {
+#radio2:checked ~ .checkmark {
 	background-color: #cc5803;
 }
 
-#radio3:checked~.checkmark {
+#radio3:checked ~ .checkmark {
 	background-color: #e63946;
 }
 
@@ -140,7 +141,7 @@ input {
 	width: 100%;
 	height: 70vh;
 	overflow: auto;
-	background-color: #aec3b0;
+	background-color: #f2cc8f;
 	padding: 20px 0px;
 	border-radius: 10px;
 }
@@ -161,7 +162,6 @@ input {
 	height: 65vh;
 	overflow: auto;
 }
-
 
 .projectTitleWrap {
 	display: flex;
@@ -216,7 +216,6 @@ h1 {
 	transform: none;
 	transition: all 0.5s cubic-bezier(.36, -0.64, .34, 1.76);
 }
-
 
 .item {
 	padding: 0px 20px;
