@@ -48,7 +48,7 @@ class ProjectToDos {
 }
 
 //Submit new project
-submitNewProject.addEventListener('click', function(e) {
+submitNewProject.addEventListener('click', function (e) {
 	e.preventDefault();
 	if (item1NewProject.checkValidity()) {
 		let projectMain = new Project(item1NewProject.value, 'project', projectsListDiv.id, itemsArray.length);
@@ -65,7 +65,7 @@ submitNewProject.addEventListener('click', function(e) {
 });
 
 //Submit todo
-submitButton.addEventListener('click', function(e) {
+submitButton.addEventListener('click', function (e) {
 	e.preventDefault();
 	if (input1.checkValidity()) {
 		if (input2.value === 'Details') {
@@ -190,7 +190,7 @@ const listMaker = (text) => {
 	}
 
 	//for the animation effect
-	setTimeout(function() {
+	setTimeout(function () {
 		list.classList.add('show');
 	}, 150);
 
@@ -212,7 +212,7 @@ const listMaker = (text) => {
 	}
 	child[3].textContent = text.priority;
 	if (text.priority === 'Can Wait') {
-		child[3].style.color = '#A2E3C4';
+		child[3].style.color = '#81B29A';
 	} else if (text.priority === 'ASAP') {
 		child[3].style.color = '#CC5803';
 	} else {
@@ -288,7 +288,7 @@ const checked = () => {
 };
 
 //new Project button
-newProjectButton.addEventListener('click', function(e) {
+newProjectButton.addEventListener('click', function (e) {
 	formContainerNewProject.style.display = 'flex';
 });
 
@@ -296,7 +296,7 @@ newProjectButton.addEventListener('click', function(e) {
 function deleteList(listTitle, identification) {
 	for (let i = 0; i < itemsArray.length; i++) {
 		if (itemsArray[i].title === listTitle && itemsArray[i].id === identification) {
-			itemsArray.splice([ i ], 1);
+			itemsArray.splice([i], 1);
 			localStorage.setItem('items', JSON.stringify(itemsArray));
 		}
 	}
