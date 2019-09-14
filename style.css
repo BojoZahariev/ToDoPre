@@ -37,7 +37,8 @@ input {
 }
 
 #item3,
-#item1NewProject {
+#item1NewProject,
+#dateRed {
 	color: #01161e;
 	font-size: 20px;
 	outline: none;
@@ -48,16 +49,25 @@ input {
 	box-shadow: inset 0 3px 6px #0000001a;
 }
 
-#item3 {
-	background: #f1faee url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50%
-		no-repeat;
+#item3,
+#dateRed {
+	background: #f1faee url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
 }
 
 #item3::-webkit-inner-spin-button {
 	display: none;
 }
 
+#dateRed::-webkit-inner-spin-button {
+	display: none;
+}
+
 #item3::-webkit-calendar-picker-indicator {
+	opacity: 0;
+	width: 20px;
+}
+
+#dateRed::-webkit-calendar-picker-indicator {
 	opacity: 0;
 	width: 20px;
 }
@@ -102,20 +112,20 @@ input {
 }
 
 /* On mouse-over, add a grey background color */
-.radioContainer:hover input ~ .checkmark {
+.radioContainer:hover input~.checkmark {
 	background-color: #ccc;
 }
 
 /* When the radio button is checked, add a blue background */
-#radio1:checked ~ .checkmark {
+#radio1:checked~.checkmark {
 	background-color: #a2e3c4;
 }
 
-#radio2:checked ~ .checkmark {
+#radio2:checked~.checkmark {
 	background-color: #cc5803;
 }
 
-#radio3:checked ~ .checkmark {
+#radio3:checked~.checkmark {
 	background-color: #e63946;
 }
 
