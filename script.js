@@ -48,7 +48,7 @@ class ProjectToDos {
 }
 
 //Submit new project
-submitNewProject.addEventListener('click', function (e) {
+submitNewProject.addEventListener('click', function(e) {
 	e.preventDefault();
 	if (item1NewProject.checkValidity()) {
 		let projectMain = new Project(item1NewProject.value, 'project', projectsListDiv.id, itemsArray.length);
@@ -65,7 +65,7 @@ submitNewProject.addEventListener('click', function (e) {
 });
 
 //Submit todo
-submitButton.addEventListener('click', function (e) {
+submitButton.addEventListener('click', function(e) {
 	e.preventDefault();
 	if (input1.checkValidity()) {
 		if (input2.value === 'Details') {
@@ -190,7 +190,7 @@ const listMaker = (text) => {
 	}
 
 	//for the animation effect
-	setTimeout(function () {
+	setTimeout(function() {
 		list.classList.add('show');
 	}, 150);
 
@@ -254,6 +254,33 @@ const listMaker = (text) => {
 		});
 	}
 
+	//change date
+	var btnRech = document.createElement('p');
+	btnRech.classList.add('btn-delete-todo');
+	btnRech.textContent = 'Rechedual';
+	list.appendChild(btnRech);
+
+	btnRech.addEventListener('click', () => {
+		const dateRed = document.createElement('input');
+		dateRed.id = 'dateRed';
+		dateRed.type = 'date';
+		if (btnRech.textContent === 'Rechedual') {
+			child[2].appendChild(dateRed);
+
+			btnRech.textContent = 'Save Changes';
+		} else if (btnRech.textContent === 'Save Changes') {
+			redactingFunctionDate(text.title, text.id, document.getElementById('dateRed').value);
+
+			if (document.getElementById('dateRed').value === input3.value) {
+				child[2].textContent = 'Due: Today';
+			} else {
+				child[2].textContent = 'Due: ' + document.getElementById('dateRed').value;
+			}
+			btnRech.textContent = 'Rechedual';
+			dateRed.remove();
+		}
+	});
+
 	//delete button
 	var btn = document.createElement('p');
 	btn.classList.add('btn-delete-todo');
@@ -276,6 +303,15 @@ const redactingFunction = (listTitle, identification, content) => {
 	}
 };
 
+const redactingFunctionDate = (listTitle, identification, content) => {
+	for (let i = 0; i < itemsArray.length; i++) {
+		if (itemsArray[i].title === listTitle && itemsArray[i].id === identification) {
+			itemsArray[i].dueDate = content;
+			localStorage.setItem('items', JSON.stringify(itemsArray));
+		}
+	}
+};
+
 //Checks which button is checked
 const checked = () => {
 	if (document.getElementById('radio1').checked) {
@@ -288,7 +324,7 @@ const checked = () => {
 };
 
 //new Project button
-newProjectButton.addEventListener('click', function (e) {
+newProjectButton.addEventListener('click', function(e) {
 	formContainerNewProject.style.display = 'flex';
 });
 
@@ -296,7 +332,7 @@ newProjectButton.addEventListener('click', function (e) {
 function deleteList(listTitle, identification) {
 	for (let i = 0; i < itemsArray.length; i++) {
 		if (itemsArray[i].title === listTitle && itemsArray[i].id === identification) {
-			itemsArray.splice([i], 1);
+			itemsArray.splice([ i ], 1);
 			localStorage.setItem('items', JSON.stringify(itemsArray));
 		}
 	}
